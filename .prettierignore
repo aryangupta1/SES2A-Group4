@@ -1,0 +1,13 @@
+dist/
+tsconfig.tsbuildinfo
+node_modules/
+coverage/
+.idea/
+.vscode/
+.DS_Store
+
+*.html
+*.css
+*.txt
+
+__snapshots__/
