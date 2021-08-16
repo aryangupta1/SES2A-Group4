@@ -64,7 +64,7 @@ export const Home = () => {
     <div className="center">
       <div>
         <h1>Welcome to The Automatic Study Groups Arrangement System</h1>
-        <h4>Powered by UTS</h4>
+        <h4>Powered by UTS. CHange</h4>
 
         <TextField
           id="username"
