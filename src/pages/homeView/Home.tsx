@@ -12,7 +12,7 @@ export const Home = () => {
       <Navbar />
       <div className="horizontal">
         <div className="leftContainer">
-          <h2 className="h2">Making Group Work Easy</h2>
+          <h2 className="h2">Making Group Work <span className="easy">Easy</span></h2>
           <h3 className="h3">We streamline the group making process</h3>
           <Button color="violet" circular>Get Started</Button>
         </div>
