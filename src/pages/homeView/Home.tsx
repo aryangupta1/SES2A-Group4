@@ -14,7 +14,7 @@ export const Home = () => {
         <div className="leftContainer">
           <h2 className="h2">Making Group Work <span className="easy">Easy</span></h2>
           <h3 className="h3">We streamline the group making process</h3>
-          <Button color="violet" circular>Get Started</Button>
+          <Button style={{backgroundColor: "#884AED", color: "white"}} circular>Get Started</Button>
         </div>
         <div className="rightContainer">
           <img src={teamImage} />
