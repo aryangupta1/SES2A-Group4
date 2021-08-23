@@ -7,21 +7,25 @@
     left:0px;
   }
   
-.horizontal{
+.navHorizontal{
     display: flex;
     flex-direction: row;
   }
   
-.rightContainer{
+.navRightContainer{
     padding: 48px;
       display: flex;
       margin-left: auto;
   }
   
-.leftContainer{
+.navLeftContainer{
     padding: 48px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
   }
   
 .logo{
   font-size: 48px;
+  margin: 0px 0px 0px 24px;
   }
