@@ -1,60 +1,79 @@
-import React from "react";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Image } from "semantic-ui-react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Login.css";
+import Logo from "../../images/logo.png";
+import TeamWorkImage from "../../images/teamwork-3.svg";
 
 const LoginForm = () => {
+  const [logins, setLogins] = useState({ username: "", password: "" }); // Not sure if this works but create state to get and set logins when user types their information
+
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setLogins({ username: "", password: "" });
+  };
+
   return (
-    <>
-      <Form>
-        <Form.Field>
+    <div className="login-form">
+      <div className="logo-container">
+        <Image className="logo" src={Logo} alt="Link" />
+      </div>
+
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <div className="form-input">
           <label>Username</label>
-          <input className="input" placeholder="Kenny123" />
-        </Form.Field>
-        <Form.Field>
+          <input className="input" onChange={(e) => setLogins({ ...logins, username: e.target.value })} />{" "}
+          {/* connected the inputs to state */}
+        </div>
+        <div className="form-input">
           <label>Password</label>
-          <input className="input" placeholder="Last Name" />
-        </Form.Field>
-        <Button class="button" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <input className="input" onChange={(e) => setLogins({ ...logins, password: e.target.value })} />{" "}
+          {/* connected the inputs to state */}
+        </div>
+        <div className="form-label">
+          <Link to="/">
+            <button className="button" type="submit">
+              Log-in
+            </button>
+          </Link>
+        </div>
+      </form>
 
       <div className="line">
         <div className="devicer"></div>
-        <div>
+        <div className="or">
           <p>Or</p>
         </div>
         <div className="devicer"></div>
       </div>
 
-      <div>
-        <h3>Don't have an account?</h3>
+      <div className="create-account">
+        <h3 className="no-account">Don't have an account?</h3>
         <Link to="/create-account">
-          <Button class="button" type="submit">
+          <button className="create-button" type="submit">
             Create Account
-          </Button>
+          </button>
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 
 const PageAnimation = () => {
   return (
     <div className="container">
-      <h2 className="title">Welcome to Link</h2>
-      <img className="img" src="" alt="" />
+      <h2 className="title">Welcome to Link!</h2>
+      <Image className="img" src={TeamWorkImage} alt="Team Work" />
     </div>
   );
 };
 
 const Login = () => {
   return (
-    <div>
+    <div className="login-page">
       <Route path="/login">
-        <LoginForm />
         <PageAnimation />
+        <LoginForm />
       </Route>
     </div>
   );
