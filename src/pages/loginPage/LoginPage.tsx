@@ -8,11 +8,28 @@ import TeamWorkImage from "../../images/teamwork-3.svg";
 const LoginForm = () => {
   const [logins, setLogins] = useState({ email: "", password: "" }); // Not sure if this works but create state to get and set logins when user types their information
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async(e: React.SyntheticEvent) => {
     e.preventDefault();
     setLogins({ email: "", password: "" });
+    try {
+      const login = await fetch('http://localhost:8000/auth/login', {
+        method:"POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(logins)
+      });
+      //JWT will be accessed in future when users navigate through user-logged-in only routes
+      const response = await login.json();
+      if(response.token){
+        sessionStorage.setItem('JWT', response["token"]);
+        console.log('Successs');
+      }
+      else{
+        console.log(response);
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
   };
-
   return (
     <div className="login-form">
       <div className="logo-container">
@@ -31,11 +48,9 @@ const LoginForm = () => {
           {/* connected the inputs to state */}
         </div>
         <div className="form-label">
-          <Link to="/">
             <button className="button" type="submit">
               Log-in
             </button>
-          </Link>
         </div>
       </form>
 
