@@ -6,11 +6,11 @@ import Logo from "../../images/logo.png";
 import TeamWorkImage from "../../images/teamwork-3.svg";
 
 const LoginForm = () => {
-  const [logins, setLogins] = useState({ username: "", password: "" }); // Not sure if this works but create state to get and set logins when user types their information
+  const [logins, setLogins] = useState({ email: "", password: "" }); // Not sure if this works but create state to get and set logins when user types their information
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    setLogins({ username: "", password: "" });
+    setLogins({ email: "", password: "" });
   };
 
   return (
@@ -21,8 +21,8 @@ const LoginForm = () => {
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="form-input">
-          <label>Username</label>
-          <input className="input" onChange={(e) => setLogins({ ...logins, username: e.target.value })} />{" "}
+          <label>Email</label>
+          <input className="input" onChange={(e) => setLogins({ ...logins, email: e.target.value })} />{" "}
           {/* connected the inputs to state */}
         </div>
         <div className="form-input">
