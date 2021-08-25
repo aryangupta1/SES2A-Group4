@@ -16,8 +16,8 @@ const Navbar = () => {
       <div className="navRightContainer">
         <Button.Group>
           <Button onClick={() => history.push("/about")}>About</Button> {/*done like this to keep styles*/}
-          <Button>Login</Button>
-          <Button>Register</Button>
+          <Button onClick={() => history.push("/login")}>Login</Button>
+          <Button onClick={() => history.push("/create-account")}>Register</Button>
         </Button.Group>
       </div>
     </div>
