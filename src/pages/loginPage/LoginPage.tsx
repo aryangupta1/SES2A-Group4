@@ -4,8 +4,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./Login.css";
 import Logo from "../../images/logo.png";
 import TeamWorkImage from "../../images/teamwork-3.svg";
+import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
+  const history = useHistory();
   const [logins, setLogins] = useState({ email: "", password: "" }); // Not sure if this works but create state to get and set logins when user types their information
 
   const handleSubmit = async(e: React.SyntheticEvent) => {
@@ -19,9 +21,12 @@ const LoginForm = () => {
       });
       //JWT will be accessed in future when users navigate through user-logged-in only routes
       const response = await login.json();
+      const email = logins.email;
+      sessionStorage.setItem('Email', email);
       if(response.token){
         sessionStorage.setItem('JWT', response["token"]);
         console.log('Successs');
+        history.push('/student-page');
       }
       else{
         console.log(response);
