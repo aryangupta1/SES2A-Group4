@@ -44,7 +44,7 @@ const LoginForm = () => {
         </div>
         <div className="form-input">
           <label>Password</label>
-          <input className="input" onChange={(e) => setLogins({ ...logins, password: e.target.value })} />{" "}
+          <input type="password" className="input" onChange={(e) => setLogins({ ...logins, password: e.target.value })} />{" "}
           {/* connected the inputs to state */}
         </div>
         <div className="form-label">
