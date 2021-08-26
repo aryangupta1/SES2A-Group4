@@ -4,8 +4,10 @@ import { Button } from 'semantic-ui-react'
 import "./About.css";
 import teamImage from "../../images/team-image.svg"
 import Navbar from '../../components/Navbar/Navbar';
+import { useHistory } from "react-router-dom";
 
 export const About = () => {
+    const history = useHistory();
     return (
         <div className="aboutBackground">
             <Navbar />
@@ -42,9 +44,9 @@ export const About = () => {
                         PageMaker including versions of Lorem Ipsum.
                     </div>
                     <div className="aboutBtnDiv">
-                    <Button style={{backgroundColor: "#884AED", color: "white"}} circular>Login</Button>
+                    <Button  onClick={() => history.push("/login")} style={{backgroundColor: "#884AED", color: "white"}} circular>Login</Button>
                     <div style={{fontWeight: "bold", fontSize: "18px"}} >or</div>
-                    <Button style={{backgroundColor: "#884AED", color: "white"}} circular>Register</Button>
+                    <Button onClick={() => history.push("/create-account")} style={{backgroundColor: "#884AED", color: "white"}} circular>Register</Button>
                     </div>
                     </div>
                 </div>
