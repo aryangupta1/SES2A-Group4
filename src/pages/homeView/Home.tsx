@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button } from 'semantic-ui-react'
 import "./Home.css";
 import teamImage from "../../images/team-image.svg"
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../components/navBar/Navbar';
 
 // import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
@@ -54,7 +54,7 @@ export const Home = () => {
 //   };
   return (
     <div className="background">
-      <Navbar />
+      <Navbar children = {} />
       <div className="horizontal">
         <div className="leftContainer">
           <h2 className="h2">Making Group Work <span className="easy">Easy</span></h2>
