@@ -1,7 +1,7 @@
 import React from 'react';
 import teamImage from "../../images/teamwork-1.svg"
 import "./Register.css";
-import { Button, Radio, Form } from 'semantic-ui-react'
+import { Button, Radio, Form, Grid } from 'semantic-ui-react'
 import { Image } from "semantic-ui-react";
 
 const PageAnimation = () => {
@@ -36,17 +36,25 @@ const FormView = () => {
                 <input type='password'/>
             </Form.Field>
             <Form.Field>
+              <label>Are you: </label>
+              
+              <Grid columns={2} relaxed='very'>
+                <Grid.Column>
           <Radio
             label='Male'
             name='radioGroup'
           />
-                    <Radio
+          </Grid.Column>
+          <Grid.Column>
+          <Radio
             label='Female'
             name='radioGroup'
           />
-        </Form.Field>
+                    </Grid.Column>
 
-            <Button type='submit'>Submit</Button>
+          </Grid>
+        </Form.Field>
+            <Button style={{backgroundColor: 'rgba(136, 74, 237, 0.8)', color: 'rgb(255, 255, 255)'}} type='continue'>Continue</Button>
           </Form>
     </div>
 
