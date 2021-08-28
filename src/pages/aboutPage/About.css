@@ -1,0 +1,54 @@
+.aboutBackground{
+  background-image: linear-gradient(#387F9A, #D9E4EA);
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  padding: 0px 96px 0px 96px;
+}
+
+.aboutHorizontal{
+  display: flex;
+  flex-direction: row;
+}
+
+.aboutRightContainer{
+  padding: 48px;
+    display: flex;
+    margin-left: auto;
+}
+
+.aboutLeftContainer{
+  align-self: center;
+}
+
+
+.aboutH2{
+  font-size: 48px;
+  font-weight: bold;
+  }
+  .aboutH3{
+  font-weight: 300;
+  font-size: 24px;
+    }
+
+
+  .aboutTextDiv{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 100%);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+  }
+
+  .aboutTextBox{
+    font-size: 18px;
+    line-height: 21.78px;
+  }
+
+  .aboutBtnDiv{
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-evenly;
+  }

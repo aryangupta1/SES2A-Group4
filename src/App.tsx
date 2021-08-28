@@ -13,6 +13,12 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path="/" component={Home} exact />
+          <Route path="/about" component={About} />
+          <Route path="/login" component={Login} />
+          <Route path="/student-page" component={StudentPage} />
+
+          {/* <Route path="/contact" component={""} />
+             <Route component={Error} />  */}
         </Switch>
       </BrowserRouter>
     );
