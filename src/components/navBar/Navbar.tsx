@@ -5,7 +5,11 @@ import Logo from "../../images/two-small-connected-chains-svgrepo-com.svg";
 import "./Navbar.css";
 import { useHistory } from "react-router-dom";
 
-const Navbar = () => {
+export interface INavBarProps {
+  children: string[];
+}
+
+const Navbar: React.FC<INavBarProps> = ({ children }) => {
   const history = useHistory();
   return (
     <div className="navHorizontal">
@@ -15,13 +19,12 @@ const Navbar = () => {
       </div>
       <div className="navRightContainer">
         <Button.Group>
-          <Button onClick={() => history.push("/about")}>About</Button> {/*done like this to keep styles*/}
-          <Button onClick={() => history.push("/login")}>Login</Button>
-          <Button onClick={() => history.push("/create-account")}>Register</Button>
+          {children.map((buttonName) => (
+            <Button onClick={() => history.push(`/${buttonName}`)}>{buttonName}</Button>
+          ))}
         </Button.Group>
       </div>
     </div>
   );
 };
-
 export default Navbar;
