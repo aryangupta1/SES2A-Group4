@@ -3,6 +3,7 @@ import teamImage from "../../images/teamwork-1.svg";
 import "./Register.css";
 import { Button, Radio, Form, Grid } from "semantic-ui-react";
 import { Image } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 
 const PageAnimation = () => {
   return (
@@ -14,9 +15,28 @@ const PageAnimation = () => {
 };
 
 const FormView = () => {
+  const history = useHistory();
   const [registerInfo, setRegister] = useState({email: "", password:""});
   const handleSubmit = async(e: React.SyntheticEvent) => {
-    //Backend Call
+  e.preventDefault();
+  setRegister({email:"", password:""});
+  try {
+    const register = await fetch('http://localhost:8000/auth/register', {
+    method:"POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(registerInfo)
+  });
+  const response = await register.json();
+  if(!response.token){
+    console.log(response);
+  }
+  else{
+    sessionStorage.setItem('JWT', response["token"]);
+    history.push('/login');
+  }
+  } catch (error) {
+    console.error(error.message);
+  }
   }
   return (
     <div className="rightContainer">
