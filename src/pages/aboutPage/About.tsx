@@ -33,7 +33,7 @@ export const About = () => {
               Lorem Ipsum.
             </div>
             <div className="aboutBtnDiv">
-              <Button
+            <Button
                 onClick={() => history.push("/login")}
                 style={{ backgroundColor: "#884AED", color: "white" }}
                 circular
@@ -42,7 +42,7 @@ export const About = () => {
               </Button>
               <div style={{ fontWeight: "bold", fontSize: "18px" }}>or</div>
               <Button
-                onClick={() => history.push("/create-account")}
+                onClick={() => history.push("/register")}
                 style={{ backgroundColor: "#884AED", color: "white" }}
                 circular
               >

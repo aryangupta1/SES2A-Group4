@@ -53,7 +53,7 @@ export const Home = () => {
   //   };
   return (
     <div className="background">
-      <Navbar children={["about", "login", "create-account"]} />
+      <Navbar children={["about", "login", "register"]} />
       <div className="horizontal">
         <div className="leftContainer">
           <h2 className="h2">

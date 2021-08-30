@@ -69,7 +69,7 @@ const LoginForm = () => {
 
       <div className="create-account">
         <h3 className="no-account">Don't have an account?</h3>
-        <Link to="/create-account">
+        <Link to="/register">
           <button className="create-button" type="submit">
             Create Account
           </button>
