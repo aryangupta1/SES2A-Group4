@@ -1,0 +1,31 @@
+.background{
+    background-image: linear-gradient(#387F9A, #D9E4EA);
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+  }
+  
+.navHorizontal{
+    display: flex;
+    flex-direction: row;
+  }
+  
+.navRightContainer{
+    padding: 48px;
+      display: flex;
+      margin-left: auto;
+  }
+  
+.navLeftContainer{
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+.logo{
+  font-size: 48px;
+  margin: 0px 0px 0px 24px;
+  }
