@@ -1,5 +1,5 @@
 import 'semantic-ui-css/semantic.min.css'
-// import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from 'semantic-ui-react'
 import "./Preferences.css";
 import finishedIllustration from "../../images/finished-illustration.svg"
@@ -8,7 +8,27 @@ import finishedIllustration from "../../images/finished-illustration.svg"
 
 
 export const Preferences = () => {
+//Preferences to render on screen
+const [studentPreferences, setPreferences] = useState([]);
+const [studentSkills, setSkills] = useState([]);
 
+const getPreferences = async() => {
+    const studentPreferences = await fetch('http://localhost:8000/preferences');
+    setPreferences(await studentPreferences.json());
+}
+const getSkills = async() => {
+    const studentSkills = await fetch('http://localhost:8000/skills');
+    setSkills(await studentSkills.json());
+}
+//Only makes one request
+useEffect(() => {
+    getPreferences();
+    getSkills();
+}, []);
+//Julian here are the preferences and skils, check chrome dev console to see these
+console.log('Prefences: ',studentPreferences);
+console.log('Skills: ', studentSkills);
+    
 const optionsRoles = [
     <option value="-">-</option>,
     <option value="Team Leader">Team Leader</option>,
@@ -94,7 +114,6 @@ return(
 )
 
 }
-
 /*  Could not get these images  to render in the correct spot. Will leave for now.
     <img alt='steps_3' className='steps' src={step_3} />
     <img alt='steps_4' className='steps' src={step_4} />
