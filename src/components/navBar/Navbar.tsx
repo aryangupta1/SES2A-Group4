@@ -20,7 +20,7 @@ const Navbar: React.FC<INavBarProps> = ({ children }) => {
       <div className={styles.navRightContainer}>
         <Button.Group>
           {children.map((buttonName) => (
-            <Button style={{position: "inherit"}} onClick={() => history.push(`/${buttonName}`)}>{buttonName}</Button>
+            <Button style={{position: "inherit"}} onClick={() => history.push(`/${buttonName}`)}>{buttonName.charAt(0).toUpperCase() + buttonName.slice(1)}</Button>
           ))}
         </Button.Group>
       </div>
