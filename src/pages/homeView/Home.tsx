@@ -1,7 +1,7 @@
 import "semantic-ui-css/semantic.min.css";
 import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
-import "./Home.css";
+import styles from "./Home.module.css";
 import teamImage from "../../images/team-image.svg";
 import Navbar from "../../components/Navbar/Navbar";
 // import React, { useState } from "react";
@@ -52,19 +52,19 @@ export const Home = () => {
   //     console.log("You submitted a password");
   //   };
   return (
-    <div className="background">
+    <div className={styles.background}>
       <Navbar children={["about", "login", "register"]} />
-      <div className="horizontal">
-        <div className="leftContainer">
-          <h2 className="h2">
+      <div className={styles.horizontal}>
+        <div className={styles.leftContainer}>
+          <h2 className={styles.h2}>
             Making Group Work <span className="easy">Easy</span>
           </h2>
-          <h3 className="h3">We streamline the group making process</h3>
-          <Button style={{ backgroundColor: "#884AED", color: "white" }} circular>
+          <h3 className={styles.h3}>We streamline the group making process</h3>
+          <Button style={{ backgroundColor: "#884AED", color: "white", position:"inherit" }} circular>
             Get Started
           </Button>
         </div>
-        <div className="rightContainer">
+        <div className={styles.rightContainer}>
           <img src={teamImage} />
         </div>
       </div>
