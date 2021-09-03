@@ -6,6 +6,7 @@ import { About } from "./pages/aboutPage/About";
 import Login from "./pages/loginPage/LoginPage";
 import StudentPage from "./pages/studentPage/studentPage";
 import { Preferences } from "./pages/Preferences/Preferences";
+import AdminPage from "./pages/adminPage/adminPage";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/student-page" component={StudentPage} />
           <Route path="/Register" component={Register} />
           <Route path="/preferences" component={Preferences} />
+          <Route path="/admin-page" component={AdminPage} />
         </Switch>
       </BrowserRouter>
     );
