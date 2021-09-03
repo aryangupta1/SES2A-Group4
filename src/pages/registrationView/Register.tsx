@@ -21,7 +21,11 @@ const FormView = () => {
   e.preventDefault();
   setRegister({email:"", password:""});
   try {
-    const register = await fetch('http://localhost:8000/auth/register', {
+    //Check if admin or student
+    const isAdmin: boolean = registerInfo.email.includes("@link.com.au");
+    let user = (isAdmin) ? 'Admin' : 'Student';
+    let url = (isAdmin) ? 'http://localhost:8000/auth/register/admin':'http://localhost:8000/auth/register';
+    const register = await fetch(url, {
     method:"POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(registerInfo)
@@ -32,7 +36,8 @@ const FormView = () => {
   }
   else{
     sessionStorage.setItem('JWT', response["token"]);
-    history.push('/login');
+    let nextPage = (user === "Admin")? '/login': '/preferences';
+    history.push(nextPage);
   }
   } catch (error) {
     console.error(error.message);
