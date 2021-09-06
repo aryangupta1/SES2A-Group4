@@ -28,21 +28,17 @@
     text-align: center;
     font-style: normal;
     font-weight: 600;
-    font-size: 300%;
-    line-height: 36px;
+    font-size: 250%;
+    line-height: 40px;
 }
 
 .preferencesForm {
     float: right;
     width: 60%;
-    margin-top: 2%;
-    
+    margin-top: 2%;    
 }
-
-Button {
-    height: 40px;
-    position: fixed;
-    left: 68%;
+.preferencesFormDiv {
+    text-align: center;
 }
 
 select{
@@ -50,49 +46,9 @@ select{
     padding: 6px 20px;
     margin-bottom:3%;
     display: list-item;
-    margin-left: 38%;
+    margin-left: 37%;
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 2px 12px #666;
     margin-top: 1%;
-
 }
-
-label {
-    margin-left: 38%;
-}
-
-/* input {
-    display: list-item;
-    margin-left: 42%;
-    width: 18%;
-    height: 40px;
-    background: rgba(136, 74, 237, 0.8);
-    border-radius: 20px;
-    border: none;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 15px;
-    line-height: 24px;
-    text-align: center;
-
-    color: #FFFFFF;
-} */
-
-/* .steps_3 {
-    position: absolute;
-    left: 11.11%;
-    right: 75%;
-    top: 71.88%;
-    bottom: 13.96%;    
-}
-
-.steps_4 {
-    position: absolute;
-    left: 31.32%;
-    right: 54.79%;
-    top: 71.88%;
-    bottom: 13.96%;
-
-    filter: drop-shadow(5px 5px 25px rgba(136, 74, 237, 0.8));
-} */
