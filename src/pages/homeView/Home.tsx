@@ -3,54 +3,11 @@ import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
 import styles from "./Home.module.css";
 import teamImage from "../../images/team-image.svg";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/NavBar/Navbar";
 // import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
 
 export const Home = () => {
-  //   const history = useHistory();
-  //   const [modalOpen, setModalOpen] = useState(false);
-  //   const [username, setUsername] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   const [signUp, setSignUp] = useState(false);
-  //   const [wrongUserPass, setWrongUserPass] = useState(false);
-
-  //   const onUserChange = (val: any) => {
-  //     setUsername(val.target.value);
-  //     console.log(val.target.value);
-  //   };
-
-  //   const onPasswordChange = (val: any) => {
-  //     setPassword(val.target.value);
-  //     console.log(val.target.value);
-  //   };
-
-  //   const beginSignUp = () => {
-  //     setSignUp(true);
-  //   };
-
-  //   const endSignup = () => {
-  //     setSignUp(false);
-  //   };
-
-  //   const openModal = () => {
-  //     setModalOpen(true);
-  //   };
-
-  //   const closeModal = () => {
-  //     setModalOpen(false);
-  //   };
-
-  //   const openWrongUserPass = () => {
-  //     setWrongUserPass(true);
-  //   };
-  //   const closeWrongUserPass = () => {
-  //     setWrongUserPass(false);
-  //   };
-
-  //   const onClickLogin = () => {
-  //     console.log("You submitted a password");
-  //   };
   return (
     <div className={styles.background}>
       <Navbar children={["about", "login", "register"]} />
@@ -60,7 +17,7 @@ export const Home = () => {
             Making Group Work <span className="easy">Easy</span>
           </h2>
           <h3 className={styles.h3}>We streamline the group making process</h3>
-          <Button style={{ backgroundColor: "#884AED", color: "white", position:"inherit" }} circular>
+          <Button style={{ backgroundColor: "#884AED", color: "white", position: "inherit" }} circular>
             Get Started
           </Button>
         </div>

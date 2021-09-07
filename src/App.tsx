@@ -5,7 +5,7 @@ import { Register } from "./pages/registrationView/Register";
 import { About } from "./pages/aboutPage/About";
 import Login from "./pages/loginPage/LoginPage";
 import StudentPage from "./pages/studentPage/studentPage";
-import { Preferences } from "./pages/Preferences/Preferences";
+import { PreferencesPage } from "./pages/PreferencesPage/PreferencesPage";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
 import AdminPage from "./pages/adminPage/adminPage";
 
@@ -32,10 +32,9 @@ class App extends Component {
             <GuardedRoute path="/about" component={About} />
             <GuardedRoute path="/login" component={Login} />
             <GuardedRoute path="/student-page" component={StudentPage} meta={{ auth: true }} />
-            <GuardedRoute path="/admin-page" component={AdminPage} meta={{ auth: true }} />
+            <GuardedRoute path="/admin-page" component={AdminPage}  />
             <GuardedRoute path="/Register" component={Register} />
-            <GuardedRoute path="/adminPage" component={AdminPage} />
-            <GuardedRoute path="/preferences" component={Preferences} meta={{ auth: true }} />
+            <GuardedRoute path="/preferences" component={PreferencesPage} meta={{ auth: true }} />
           </Switch>
         </GuardProvider>
       </BrowserRouter>

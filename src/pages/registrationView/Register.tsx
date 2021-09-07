@@ -40,7 +40,7 @@ const FormView = () => {
     history.push(nextPage);
   }
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
   }
   return (

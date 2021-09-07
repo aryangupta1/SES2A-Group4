@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "semantic-ui-react";
+import { Preferences } from "../../components/Preferences/preferences";
 
 const AdminPage = () => {
   const [owner] = useState(sessionStorage.getItem("Email"));
@@ -11,32 +11,10 @@ const AdminPage = () => {
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const studentPreferences = await fetch("http://localhost:8000/preferences");
-
-    const getPreferences = async () => {
-      // fetch preferences from backend & render them into form
-      const studentPreferences = await fetch("http://localhost:8000/preferences");
-      let prefs = await studentPreferences.json();
-      const prefRoles = [<option value="-">-</option>]; // initialise array with default value
-      for (const [key, value] of Object.entries(prefs)) {
-        // for each key and value inside object
-        prefRoles.push(<option value={key}>{`${value}`}</option>); // create a tag for the form with the values
-      }
-      setPreferences(prefRoles);
-    };
-    const getSkills = async () => {
-      // fetch skills from backend & render them into form
-      const studentSkills = await fetch("http://localhost:8000/skills");
-      let skills = await studentSkills.json();
-      const skillRoles = [<option value="-">-</option>]; // initialise array with default value
-      for (const [key, value] of Object.entries(skills)) {
-        // for each key and value inside object
-        skillRoles.push(<option value={key}>{`${value}`}</option>); // create a tag for the form with the values
-      }
-      setSkills(skillRoles);
-    };
 
     try {
+      const getCurrentAssignments = await fetch("http://localhost:8000/:owner");
+
       const createAssignment = await fetch("http://localhost:8000/assignments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,34 +30,46 @@ const AdminPage = () => {
       const response = await createAssignment.json();
       console.log(response);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
 
   return (
     <div>
-      <h1>Welcome {owner} to your admin dashboard</h1>
-      <h2>Create an assignment below!</h2>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="form-input">
-          <label>Assignment Name</label>
-          <input className="input" onChange={(e) => setAssignmentName(e.target.value)} />
-        </div>
-        <div className="form-input">
-          <label>Number of Groups</label>
-          <input type="input" className="input" onChange={(e) => setGroupNumbers(parseInt(e.target.value))} />
-        </div>
-        <div className="form-input">
-          <label>Max size of each group</label>
-          <input className="input" onChange={(e) => setMaxSizeOfGroup(parseInt(e.target.value))} />
-        </div>
+      <div className="ui top attached menu ui centered grid">
+        <h1>Welcome {owner} to your admin dashboard</h1>
+      </div>
+      <div className="ui grid">
+        <div className="four wide column">
+          <h2>Create an assignment below!</h2>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <div className="form-input">
+              <label>Assignment Name</label>
+              <input className="input" onChange={(e) => setAssignmentName(e.target.value)} />
+            </div>
+            <div className="form-input">
+              <label>Number of Groups</label>
+              <input type="input" className="input" onChange={(e) => setGroupNumbers(parseInt(e.target.value))} />
+            </div>
+            <div className="form-input">
+              <label>Max size of each group</label>
+              <input className="input" onChange={(e) => setMaxSizeOfGroup(parseInt(e.target.value))} />
+            </div>
 
-        <div className="form-label">
-          <button className="button" type="submit">
-            Create Assignment!
-          </button>
+            <div className="form-label">
+              <button className="button" type="submit">
+                Create Assignment!
+              </button>
+            </div>
+            <Preferences />
+          </form>
         </div>
-      </form>
+        <div className="four wide column"></div>
+        <div className="four wide column"></div>
+        <div className="four wide column">
+          <h1>Your current assignments</h1>
+        </div>
+      </div>
     </div>
   );
 };
