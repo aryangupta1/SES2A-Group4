@@ -32,7 +32,7 @@ class App extends Component {
             <GuardedRoute path="/about" component={About} />
             <GuardedRoute path="/login" component={Login} />
             <GuardedRoute path="/student-page" component={StudentPage} meta={{ auth: true }} />
-            <GuardedRoute path="/admin-page" component={AdminPage}  />
+            <GuardedRoute path="/admin-page" component={AdminPage}  meta={{ auth: true }}/>
             <GuardedRoute path="/Register" component={Register} />
             <GuardedRoute path="/preferences" component={PreferencesPage} meta={{ auth: true }} />
           </Switch>
