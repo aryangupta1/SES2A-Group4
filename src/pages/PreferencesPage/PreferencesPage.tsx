@@ -16,7 +16,9 @@ export const PreferencesPage = () => {
         </h3>
         <img alt="finished-illustration" className="finishedIllustration" src={finishedIllustration} />
       </div>
+      <div className="Preferences" style={{display:'flex', justifyContent:'space-around',}}>
       <Preferences />
+      </div>
     </div>
   );
 };
