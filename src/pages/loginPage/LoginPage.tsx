@@ -16,7 +16,7 @@ const LoginForm = () => {
     try {
       const isAdmin: boolean = logins.email.includes("@link.com.au");
       let user = (isAdmin) ? 'Admin' : 'Student';
-      let url = (isAdmin) ? 'http://localhost:8000/auth/login/admin':'http://localhost:8000/login/register';
+      let url = (isAdmin) ? 'http://localhost:8000/auth/login/admin':'http://localhost:8000/auth/login/';
       const login = await fetch(url, {
         method:"POST",
         headers: {"Content-Type": "application/json"},
