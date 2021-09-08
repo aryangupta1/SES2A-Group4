@@ -2,9 +2,6 @@ import "semantic-ui-css/semantic.min.css";
 import React, { useState, useEffect } from "react";
 import { Button } from "semantic-ui-react";
 import "./Preferences.css";
-import finishedIllustration from "../../images/finished-illustration.svg";
-// import step_3 from "../../images/step-3.svg"
-// import step_4 from "../../images/step-4.svg"
 
 export const Preferences = () => {
   //Preferences to render on screen
@@ -95,7 +92,3 @@ export const Preferences = () => {
     </div>
   );
 };
-/*  Could not get these images  to render in the correct spot. Will leave for now.
-    <img alt='steps_3' className='steps' src={step_3} />
-    <img alt='steps_4' className='steps' src={step_4} />
-*/
