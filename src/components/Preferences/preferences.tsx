@@ -45,7 +45,6 @@ export const Preferences = () => {
       // create an object with
       pref1: formData.get("pref1"),
       pref2: formData.get("pref2"),
-      pref3: formData.get("pref3"),
       role1: formData.get("role1"),
       role2: formData.get("role2"),
     };
