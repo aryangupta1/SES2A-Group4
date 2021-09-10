@@ -13,7 +13,13 @@ const AdminPage = () => {
     e.preventDefault();
 
     try {
-      const getCurrentAssignments = await fetch("http://localhost:8000/:owner");
+      const getCurrentAssignments = await fetch("http://localhost:8000/:owner/admin-page", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          owner,
+        }),
+      });
 
       const createAssignment = await fetch("http://localhost:8000/assignments", {
         method: "POST",
