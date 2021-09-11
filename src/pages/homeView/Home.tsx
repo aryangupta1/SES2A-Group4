@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
 import styles from "./Home.module.css";
 import teamImage from "../../images/team-image.svg";
-import Navbar from "../../components/NavBar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 // import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
 
