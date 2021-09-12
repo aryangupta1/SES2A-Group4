@@ -1,6 +1,4 @@
 import "semantic-ui-css/semantic.min.css";
-import React, { useState, useEffect } from "react";
-import { Button } from "semantic-ui-react";
 import "../../components/Preferences/preferences";
 import finishedIllustration from "../../images/finished-illustration.svg";
 import { Preferences } from "../../components/Preferences/preferences";
@@ -16,7 +14,9 @@ export const PreferencesPage = () => {
         </h3>
         <img alt="finished-illustration" className="finishedIllustration" src={finishedIllustration} />
       </div>
+      <div className="Preferences" style={{display:'flex', justifyContent:'space-around',}}>
       <Preferences />
+      </div>
     </div>
   );
 };
