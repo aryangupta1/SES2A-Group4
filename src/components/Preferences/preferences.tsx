@@ -48,6 +48,7 @@ export const Preferences = () => {
       role1: formData.get("role1"),
       role2: formData.get("role2"),
     };
+    console.log(prefData);
     for (const [, value] of Object.entries(prefData)) {
       if (value === "-") console.log("Please fill in all the options!");
     }
@@ -59,27 +60,27 @@ export const Preferences = () => {
         <form className="preferencesForm" onSubmit={(e) => submitForm(e)}>
           <h3 className="topText">Roles</h3>
           <label>
-            Preference 1
-            <select id="pref1" name="pref1">
-              {studentPreferences}
-            </select>
-          </label>
-          <label>
-            Preference 2
-            <select id="pref2" name="pref2">
-              {studentPreferences}
-            </select>
-          </label>
-          <h3 className="topText">Skills</h3>
-          <label>
             Role Preference 1
             <select id="role1" name="role1">
-              {studentSkills}
+              {studentPreferences}
             </select>
           </label>
           <label>
             Role Preference 2
             <select id="role2" name="role2">
+              {studentPreferences}
+            </select>
+          </label>
+          <h3 className="topText">Skills</h3>
+          <label>
+            Skill Preference 1
+            <select id="pref1" name="pref1">
+              {studentSkills}
+            </select>
+          </label>
+          <label>
+            Skill Preference 2
+            <select id="pref2" name="pref2">
               {studentSkills}
             </select>
           </label>
