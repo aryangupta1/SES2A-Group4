@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FormComponent } from "../../components/formComponent/form";
 import { Preferences } from "../../components/Preferences/preferences";
 
 const AdminPage = () => {
@@ -47,6 +48,16 @@ const AdminPage = () => {
       </div>
       <div className="ui grid">
         <div className="four wide column">
+          <FormComponent
+            onSubmit="handleSubmit"
+            numberOfPreferences={3}
+            numberOfSkills={3}
+            submitButtonText="it works"
+            requiredFields={["Assignment Name", "Number of Groups", "Max Group Size"]}
+          />
+        </div>
+        <div className="four wide column"></div>
+        <div className="four wide column">
           <h2>Create an assignment below!</h2>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="form-input">
@@ -67,11 +78,8 @@ const AdminPage = () => {
                 Create Assignment!
               </button>
             </div>
-            <Preferences />
           </form>
         </div>
-        <div className="four wide column"></div>
-        <div className="four wide column"></div>
         <div className="four wide column">
           <h1>Your current assignments</h1>
         </div>
