@@ -2,8 +2,10 @@ import "semantic-ui-css/semantic.min.css";
 import React, { useState, useEffect } from "react";
 import { Button } from "semantic-ui-react";
 import "./Preferences.css";
+import { useHistory } from "react-router-dom";
 
 export const Preferences = () => {
+  const history = useHistory();
   //Preferences to render on screen
   const [studentPreferences, setPreferences] = useState<JSX.Element[]>();
   const [studentSkills, setSkills] = useState<JSX.Element[]>();
@@ -37,7 +39,7 @@ export const Preferences = () => {
     getSkills();
   }, []);
 
-  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = async(e: React.FormEvent<HTMLFormElement>) => {
     // paramater takes in form data
     e.preventDefault(); // prevents page reload on submit
     const formData = new FormData(e.target as HTMLFormElement); // parse form data
@@ -48,7 +50,23 @@ export const Preferences = () => {
       role1: formData.get("role1"),
       role2: formData.get("role2"),
     };
-    console.log(prefData);
+    const email = sessionStorage.getItem('Email');
+    const submitRoles = await fetch(`http://localhost:8000/students/${email}/roles`, {
+      method:"PUT",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify([prefData.role1, prefData.role2])
+    });
+    const submitSkills = await fetch(`http://localhost:8000/students/${email}/skills`, {
+      method:"PUT",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify([prefData.pref1, prefData.pref2])
+    });    
+    if(submitRoles.ok && submitSkills.ok){
+      history.push("/student-page");
+    }
+    else{
+      window.location.reload();
+    }
     for (const [, value] of Object.entries(prefData)) {
       if (value === "-") console.log("Please fill in all the options!");
     }
