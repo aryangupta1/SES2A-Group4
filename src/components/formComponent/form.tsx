@@ -1,7 +1,7 @@
 import "semantic-ui-css/semantic.min.css";
 import React, { useState, useEffect } from "react";
 import { Button } from "semantic-ui-react";
-import "./Preferences.css";
+import "./form.css";
 
 export interface IFormComponents {
   requiredFields?: string[];
