@@ -17,7 +17,7 @@ export const Preferences = () => {
     const prefRoles = [<option value="-">-</option>]; // initialise array with default value
     for (const [key, value] of Object.entries(prefs)) {
       // for each key and value inside object
-      prefRoles.push(<option value={key}>{`${value}`}</option>); // create a tag for the form with the values
+      prefRoles.push(<option key={key}>{`${value}`}</option>); // create a tag for the form with the values
     }
     setPreferences(prefRoles);
   };
@@ -28,7 +28,7 @@ export const Preferences = () => {
     const skillRoles = [<option value="-">-</option>]; // initialise array with default value
     for (const [key, value] of Object.entries(skills)) {
       // for each key and value inside object
-      skillRoles.push(<option value={key}>{`${value}`}</option>); // create a tag for the form with the values
+      skillRoles.push(<option key={key}>{`${value}`}</option>); // create a tag for the form with the values
     }
     setSkills(skillRoles);
   };
@@ -50,6 +50,7 @@ export const Preferences = () => {
       role1: formData.get("role1"),
       role2: formData.get("role2"),
     };
+    console.log(prefData);
     const email = sessionStorage.getItem('Email');
     const submitRoles = await fetch(`http://localhost:8000/students/${email}/roles`, {
       method:"PUT",
