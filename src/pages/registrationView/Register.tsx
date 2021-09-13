@@ -35,6 +35,7 @@ const FormView = () => {
     console.log(response);
   }
   else{
+    sessionStorage.setItem('User', user);
     sessionStorage.setItem('JWT', response["token"]);
     sessionStorage.setItem('Email', registerInfo.email);
     let nextPage = (user === "Admin")? '/admin-page': '/preferences';

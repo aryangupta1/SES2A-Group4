@@ -21,18 +21,30 @@ const requireJWT = (to: any, from: any, next: any) => {
     next();
   }
 };
+const adminOnly = (to: any, from: any, next: any) => {
+  if(to.meta.auth === 'RequireAdmin'){
+    const isAdmin: Boolean = (sessionStorage.getItem('User') === 'Admin');
+    if(isAdmin){
+      next();
+    }
+    next.redirect("/login");
+  }
+  else{
+    next();
+  }
+}
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <GuardProvider guards={[requireJWT]}>
+        <GuardProvider guards={[requireJWT, adminOnly]}>
           <Switch>
             <GuardedRoute path="/" component={Home} exact />
             <GuardedRoute path="/about" component={About} />
             <GuardedRoute path="/login" component={Login} />
             <GuardedRoute path="/student-page" component={StudentPage} meta={{ auth: true }} />
-            <GuardedRoute path="/admin-page" component={AdminPage}  meta={{ auth: true }}/>
+            <GuardedRoute path="/admin-page" component={AdminPage}  meta={{ auth: true && 'RequireAdmin' }}/>
             <GuardedRoute path="/Register" component={Register} />
             <GuardedRoute path="/preferences" component={PreferencesPage} meta={{ auth: true }} />
           </Switch>
