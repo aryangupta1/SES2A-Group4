@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
 import styles from "./Home.module.css";
 import teamImage from "../../images/team-image.svg";
-import Navbar from "../../components/Navbar/Navbar";
+/* import Navbar from "../../components/Navbar/Navbar"; */
 // import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
 
 export const Home = () => {
   return (
     <div className={styles.background}>
-      <Navbar children={["about", "login", "register"]} />
+      {/*       <Navbar children={["about", "login", "register"]} /> */}
       <div className={styles.horizontal}>
         <div className={styles.leftContainer}>
           <h2 className={styles.h2}>

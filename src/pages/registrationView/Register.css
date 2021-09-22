@@ -1,97 +1,99 @@
 .button {
-    background-color: #000000; /* Green */
-    border: none;
-    color: rgb(255, 255, 255);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  }
-  .button2:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  }
-  
-  .label {
-    color: white;
-    padding: 8px;
-  }
-  
-  .success {background-color: #04AA6D;} /* Green */
-  .info {background-color: #2196F3;} /* Blue */
-  .warning {background-color: #ff9800;} /* Orange */
-  .danger {background-color: #f44336;} /* Red */
-  .other {background-color: #e7e7e7; color: black;} /* Gray */
-  .admin {background-color: blueviolet;}
-  
-  
-  .center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-  }
-  
-  .background{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0px;
-    left:0px;
-    padding: 0px 96px 0px 96px;
-  }
-  
-  .horizontal{
-    display: flex;
-    flex-direction: row;
-  }
-  
-  
-  .leftContainer{
-    align-self: center;
-    /* height: 100%; */
-    position: absolute;
-    /* width: 720px; */
-    height: 944px;
-    left: 28px;
-    top: 28px;
-    background: linear-gradient(180deg, rgba(136, 74, 237, 0.8) 0%, #387F9A 100%);
-    border-radius: 20px;
-  }
+  background-color: #000000; /* Green */
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
 
-  .registration-page{
-    display: flex;
-    
-  }
+.label {
+  color: white;
+  padding: 8px;
+}
 
-  .image-container { 
-    background: linear-gradient(180deg, rgba(136, 74, 237, 0.8) 0%, #387F9A 100%);
-    border-radius: 20px;
-    position: relative;
-    width: 720px;
-    height: 944px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.success {
+  background-color: #04aa6d;
+} /* Green */
+.info {
+  background-color: #2196f3;
+} /* Blue */
+.warning {
+  background-color: #ff9800;
+} /* Orange */
+.danger {
+  background-color: #f44336;
+} /* Red */
+.other {
+  background-color: #e7e7e7;
+  color: black;
+} /* Gray */
+.admin {
+  background-color: blueviolet;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  padding: 0px 96px 0px 96px;
+}
+
+.registration-page {
+  display: flex;
+}
+
+.image-container {
+  background: linear-gradient(180deg, rgba(136, 74, 237, 0.8) 0%, #387f9a 100%);
+  border-radius: 20px;
+  position: relative;
+  width: 720px;
+  height: 944px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   left: 39px;
   top: 40px;
-  }
-  
-  .rightContainer{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 15%;
-  }
+}
 
-  .registration-form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 15%;
+.rightContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 10%;
+  width: 40%;
+  align-self: center;
+  align-items: center;
+}
+
+.registration-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 15%;
 }
 
 .div1 {
@@ -101,29 +103,62 @@
   width: auto;
 }
 
-
 .div2 {
   background: #666;
   height: 100%;
 }
 
-  .logo{
+.logo {
   font-size: 48px;
-  }
+}
 
-  .h1{
-      color:white;
-      text-align:center;
-      font-family: Helvetica;
-  }
-  
-  .h2{
-    font-size: 20px;
-    font-weight: bold;
-    text-align:center;
-    }
-    .h3{
-    font-weight: 300;
-    font-size: 24px;
-      }
-    
+.h1 {
+  color: white;
+  text-align: center;
+  font-family: Helvetica;
+}
+
+.h2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.h3 {
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.input {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.8) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 3px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  width: 422px;
+  height: 40px;
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #884aed;
+  border-radius: 30px;
+  width: 121px;
+  height: 28px;
+  color: #ffffff;
+  border: none;
+}
