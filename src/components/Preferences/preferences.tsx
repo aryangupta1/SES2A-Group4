@@ -1,7 +1,6 @@
 import "semantic-ui-css/semantic.min.css";
 import React, { useState, useEffect } from "react";
 import { Button } from "semantic-ui-react";
-import "./Preferences.css";
 import { useHistory } from "react-router-dom";
 
 export const Preferences = () => {
@@ -74,40 +73,16 @@ export const Preferences = () => {
   };
 
   return (
-    <div className="ui grid">
-      <div className="preferencesFormDiv">
-        <form className="preferencesForm" onSubmit={(e) => submitForm(e)}>
-          <h3 className="topText">Roles</h3>
-          <label>
-            Role Preference 1
-            <select id="role1" name="role1">
-              {studentPreferences}
-            </select>
-          </label>
-          <label>
-            Role Preference 2
-            <select id="role2" name="role2">
-              {studentPreferences}
-            </select>
-          </label>
-          <h3 className="topText">Skills</h3>
-          <label>
-            Skill Preference 1
-            <select id="pref1" name="pref1">
-              {studentSkills}
-            </select>
-          </label>
-          <label>
-            Skill Preference 2
-            <select id="pref2" name="pref2">
-              {studentSkills}
-            </select>
-          </label>
-          <Button color="violet" type="submit">
-            Create
-          </Button>
-        </form>
-      </div>
-    </div>
-  );
+    <form className="preferencesForm" onSubmit={(e) => submitForm(e)}>
+        <h3>Roles</h3>
+        <p>Role Preference 1</p> <select id="role1" name="role1"> {studentPreferences} </select> <br></br>
+        <p>Role Preference 2</p> <select id="role2" name="role2"> {studentPreferences} </select>
+        
+        <h3>Skills</h3>
+        <p>Skill Preference </p> <select id="pref1" name="pref1"> {studentSkills} </select><br></br>
+        <p>Skill Preference 2</p> <select id="pref2" name="pref2"> {studentSkills} </select>
+        <br></br>
+        <Button color="violet" type="submit"> Create </Button>
+    </form>
+)
 };
