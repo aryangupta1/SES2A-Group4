@@ -9,7 +9,7 @@ export interface INavBarProps {
   children: string[];
 }
 
-const Navbar: React.FC<INavBarProps> = ({ children }) => {
+export const Navbar: React.FC<INavBarProps> = ({ children }) => {
   const history = useHistory();
   return (
     <div className={styles.navHorizontal}>
@@ -20,7 +20,9 @@ const Navbar: React.FC<INavBarProps> = ({ children }) => {
       <div className={styles.navRightContainer}>
         <Button.Group>
           {children.map((buttonName) => (
-            <Button style={{position: "inherit"}} onClick={() => history.push(`/${buttonName}`)}>{buttonName.charAt(0).toUpperCase() + buttonName.slice(1)}</Button>
+            <Button style={{ position: "inherit" }} onClick={() => history.push(`/${buttonName}`)}>
+              {buttonName.charAt(0).toUpperCase() + buttonName.slice(1)}
+            </Button>
           ))}
         </Button.Group>
       </div>
