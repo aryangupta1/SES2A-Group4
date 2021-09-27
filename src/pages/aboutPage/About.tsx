@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
 import styles from "./About.module.css";
 import teamImage from "../../images/team-image.svg";
-import Navbar from "../../components/Navbar/Navbar";
+/* import Navbar from "../../components/Navbar/Navbar"; */
 import { useHistory } from "react-router-dom";
 
 export const About = () => {
   const history = useHistory();
   return (
     <div className={styles.aboutBackground}>
-      <Navbar children={["about", "login", "register"]} />
+      {/* <Navbar children={["about", "login", "register"]} /> */}
       <div className={styles.aboutHorizontal}>
         <div className={styles.aboutLeftContainer}>
           <h2 className={styles.aboutH2}>About Us</h2>
