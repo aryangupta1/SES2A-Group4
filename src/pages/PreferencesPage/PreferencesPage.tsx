@@ -1,4 +1,4 @@
-import finishedIllustration from "../../images/finished-illustration.svg";
+import finishedIllustration from "../../images/preferences.png";
 import { Preferences } from "../../components/Preferences/preferences";
 import "./PreferencesPage.css"
 
