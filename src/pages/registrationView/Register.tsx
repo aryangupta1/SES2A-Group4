@@ -71,7 +71,7 @@ const FormView = () => {
         <div style={{ alignSelf: "center", marginTop: "30px" }}>
           <Button
             style={{ backgroundColor: "rgba(136, 74, 237, 0.8)", color: "rgb(255, 255, 255)", borderRadius: "30px" }}
-            type="continue"
+            type="submit"
           >
             Continue
           </Button>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FormComponent } from "../../components/formComponent/form";
 import { Preferences } from "../../components/Preferences/preferences";
+import Modal from "react-modal";
+import "./adminPage.css";
 
 const AdminPage = () => {
   const [owner] = useState(sessionStorage.getItem("Email"));
@@ -9,18 +11,19 @@ const AdminPage = () => {
   const [assignmentName, setAssignmentName] = useState("");
   const [studentPreferences, setPreferences] = useState<JSX.Element[]>();
   const [studentSkills, setSkills] = useState<JSX.Element[]>();
+  const [open, isOpen] = useState(false);
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     try {
-    //   const getCurrentAssignments = await fetch("http://localhost:8000/:owner/admin-page", {
-    //     method: "GET",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({
-    //       owner,
-    //     }),
-    //   });
+      //   const getCurrentAssignments = await fetch("http://localhost:8000/:owner/admin-page", {
+      //     method: "GET",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       owner,
+      //     }),
+      //   });
 
       const createAssignment = await fetch("http://localhost:8000/assignments", {
         method: "POST",
@@ -56,30 +59,36 @@ const AdminPage = () => {
             requiredFields={["Assignment Name", "Number of Groups", "Max Group Size"]}
           />
         </div>
-        <div className="four wide column"></div>
-        <div className="four wide column">
-          <h2>Create an assignment below!</h2>
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="form-input">
-              <label>Assignment Name</label>
-              <input className="input" onChange={(e) => setAssignmentName(e.target.value)} />
-            </div>
-            <div className="form-input">
-              <label>Number of Groups</label>
-              <input type="input" className="input" onChange={(e) => setGroupNumbers(parseInt(e.target.value))} />
-            </div>
-            <div className="form-input">
-              <label>Max size of each group</label>
-              <input className="input" onChange={(e) => setMaxSizeOfGroup(parseInt(e.target.value))} />
-            </div>
-
-            <div className="form-label">
-              <button className="button" type="submit">
-                Create Assignment!
-              </button>
-            </div>
-          </form>
+        <div>
+          <button className="assignment-button" onClick={() => isOpen(!open)}>
+            Create Assignment
+          </button>
         </div>
+        {open && (
+          <div>
+            <h2 style={{ textAlign: "center" }}>Create an assignment below!</h2>
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <div className="form-input">
+                <label>Assignment Name</label>
+                <input className="input" onChange={(e) => setAssignmentName(e.target.value)} />
+              </div>
+              <div className="form-input">
+                <label>Number of Groups</label>
+                <input type="input" className="input" onChange={(e) => setGroupNumbers(parseInt(e.target.value))} />
+              </div>
+              <div className="form-input">
+                <label>Max size of each group</label>
+                <input className="input" onChange={(e) => setMaxSizeOfGroup(parseInt(e.target.value))} />
+              </div>
+
+              <div className="form-label">
+                <button className="assignment-button" type="submit">
+                  Create!
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
         <div className="four wide column">
           <h1>Your current assignments</h1>
         </div>

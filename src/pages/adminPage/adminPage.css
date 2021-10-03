@@ -1,0 +1,16 @@
+.assignment-button{ 
+  background: #060000;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+  outline: none;
+  border: none;
+}
+
+.assignment-button:hover{ 
+  background: linear-gradient(90deg, #884AED 0%, #387F9A 100%);
+  outline: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 20px;
+  cursor: pointer;
+}
