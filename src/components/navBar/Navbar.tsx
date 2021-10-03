@@ -1,7 +1,7 @@
 import "semantic-ui-css/semantic.min.css";
 import React, { useState } from "react";
 import { Button } from "semantic-ui-react";
-import Logo from "../../images/two-small-connected-chains-svgrepo-com.svg";
+import Logo from "../../images/logo.png";
 import styles from "./Navbar.module.css";
 import { useHistory } from "react-router-dom";
 
