@@ -14,8 +14,9 @@
   
 .navRightContainer{
     padding: 48px;
-      display: flex;
-      margin-left: auto;
+    display: flex;
+    margin-left: auto;
+    align-items: center;
   }
   
 .navLeftContainer{

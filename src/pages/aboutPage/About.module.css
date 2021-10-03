@@ -21,18 +21,52 @@
 
 .aboutLeftContainer{
   align-self: center;
+  display: flex;
+  padding: 48px;
+  align-content: center;
+
 }
 
 
+.aboutUs{
+  font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+letter-spacing: 0.1em;
+color: #777777;
+}
+
+.aboutLabel{
+  font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 44px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+}
+
 .aboutH2{
-  font-size: 48px;
+  font-size: 24px;
   font-weight: bold;
   }
   .aboutH3{
   font-weight: 300;
-  font-size: 24px;
+  font-size: 18px;
     }
 
+  .imageHolder{
+    border-radius: 180px;
+    width: 94.34px;
+    height: 100px;
+    align-content: center;
+    display: flex;
+  }
 
   .aboutTextDiv{
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.6) 100%);
@@ -42,6 +76,9 @@
     text-align: center;
   }
 
+  .aboutTextDiv2{
+    padding: 48px;
+  }
   .aboutTextBox{
     font-size: 18px;
     line-height: 21.78px;
@@ -50,5 +87,11 @@
   .aboutBtnDiv{
     margin-top: 48px;
     display: flex;
-    justify-content: space-evenly;
+   
+  }
+
+  .center {
+  justify-content: center;
+  display: flex;
+
   }

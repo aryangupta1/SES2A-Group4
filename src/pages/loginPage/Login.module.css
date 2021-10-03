@@ -1,0 +1,132 @@
+.input {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.8) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 3px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  width: 422px;
+  height: 40px;
+  margin-top: 10px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.button {
+  background-color: #884aed;
+  border-radius: 30px;
+  width: 200px;
+  height: 40px;
+  color: #ffffff;
+}
+
+.create-button {
+  background-color: #884aed;
+  border-radius: 30px;
+  width: 121px;
+  height: 28px;
+  color: #ffffff;
+  border: none;
+}
+
+.create-account {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background: linear-gradient(180deg, rgba(136, 74, 237, 0.8) 0%, #387f9a 100%);
+  border-radius: 20px;
+  position: relative;
+  width: 720px;
+  height: 944px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  left: 39px;
+  top: 40px;
+}
+
+.no-account {
+  font-size: 16px;
+}
+
+.title {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  position: absolute;
+  width: 425px;
+  height: 41px;
+  left: 155px;
+  top: 133px;
+}
+
+.img {
+  position: absolute;
+  width: 37.5rem;
+  height: 18.75rem;
+}
+
+.devicer {
+  width: 10em;
+  display: block;
+  height: 2px;
+  background-color: #4b4b4d;
+  margin: 25px 10px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-page {
+  display: flex;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 15%;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+}
+
+.or {
+  margin-top: 15px;
+}

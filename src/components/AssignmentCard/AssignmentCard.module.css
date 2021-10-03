@@ -1,0 +1,18 @@
+.outerCard{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: rgb(112, 123, 172);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 12px;
+}
+.container{
+  padding-top: 10px;
+}
+.title{
+  font-size: 20px;
+  font-weight: bold;
+}
+.title{
+  font-size: 16px;
+}

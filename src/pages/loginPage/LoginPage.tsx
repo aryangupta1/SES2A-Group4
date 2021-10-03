@@ -14,7 +14,10 @@ const LoginForm = () => {
     e.preventDefault();
     setLogins({ email: "", password: "" });
     try {
-      const login = await fetch('http://localhost:8000/auth/login', {
+      const isAdmin: boolean = logins.email.includes("@link.com.au");
+      let user = (isAdmin) ? 'Admin' : 'Student';
+      let url = (isAdmin) ? 'http://localhost:8000/auth/login/admin':'http://localhost:8000/auth/login/';
+      const login = await fetch(url, {
         method:"POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(logins)
@@ -26,13 +29,18 @@ const LoginForm = () => {
       if(response.token){
         sessionStorage.setItem('JWT', response["token"]);
         console.log('Successs');
-        history.push('/student-page');
+        let nextPage = (user === "Admin")? '/admin-page': '/student-page';
+        history.push(nextPage);
       }
       else{
-        console.log(response);
+        alert(response);
+        //Refresh page  
+        window.location.reload();
       }
     } catch (error) {
-      console.error(error.message);
+      alert(error);
+      //Refresh page  
+      window.location.reload();
     }
   };
   return (
