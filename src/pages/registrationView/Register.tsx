@@ -42,6 +42,8 @@ const FormView = () => {
         if (!response.token) {
           console.log(response);
           alert(response);
+          //Refresh page  
+          window.location.reload();
         } else {
           sessionStorage.setItem("User", user);
           sessionStorage.setItem("JWT", response["token"]);
