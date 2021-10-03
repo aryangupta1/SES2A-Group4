@@ -1,6 +1,7 @@
 import { useFormControl } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Button } from "semantic-ui-react";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
 import { FormComponent } from "../../components/formComponent/form";
 import { Preferences } from "../../components/Preferences/preferences";
@@ -60,7 +61,7 @@ const AdminPage = () => {
         <h1>Welcome {email} to your admin dashboard</h1>
       </div>
       <div className="ui grid">
-        <div className="four wide column">
+        <div className="eight wide column">
           <FormComponent
             onSubmit="handleSubmit"
             numberOfPreferences={3}
@@ -69,7 +70,6 @@ const AdminPage = () => {
             requiredFields={["Assignment Name", "Number of Groups", "Max Group Size"]}
           />
         </div>
-        <div className="four wide column"></div>
         <div className="four wide column">
           <h2>Create an assignment below!</h2>
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -87,9 +87,8 @@ const AdminPage = () => {
             </div>
 
             <div className="form-label">
-              <button className="button" type="submit">
-                Create Assignment!
-              </button>
+            <Button color="violet" type="submit"> Create! </Button>
+
             </div>
           </form>
         </div>
