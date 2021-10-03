@@ -9,6 +9,7 @@ export interface IFormComponents {
   numberOfPreferences?: number;
   submitButtonText?: string;
   onSubmit: any;
+  submitType: string;
 }
 
 export const FormComponent: React.FC<IFormComponents> = ({
@@ -16,13 +17,15 @@ export const FormComponent: React.FC<IFormComponents> = ({
   numberOfSkills = 0,
   numberOfPreferences = 0,
   submitButtonText = "Submit",
+  submitType
 }) => {
   const [studentPreferences, setPreferences] = useState<JSX.Element[]>();
   const [studentSkills, setSkills] = useState<JSX.Element[]>();
+  const [email] = useState(sessionStorage.getItem('Email'));
 
   const getPreferences = async () => {
     // fetch preferences from backend & render them into form
-    const studentPreferences = await fetch("http://localhost:8000/preferences");
+    const studentPreferences = await fetch("http://localhost:8000/students/preferences");
     let prefs = await studentPreferences.json();
     const prefRoles = [<option value="-">-</option>]; // initialise array with default value
     for (const [key, value] of Object.entries(prefs)) {
@@ -33,7 +36,7 @@ export const FormComponent: React.FC<IFormComponents> = ({
   };
   const getSkills = async () => {
     // fetch skills from backend & render them into form
-    const studentSkills = await fetch("http://localhost:8000/skills");
+    const studentSkills = await fetch("http://localhost:8000/students/skills");
     let skills = await studentSkills.json();
     const skillRoles = [<option value="-">-</option>]; // initialise array with default value
     for (const [key, value] of Object.entries(skills)) {
@@ -54,37 +57,35 @@ export const FormComponent: React.FC<IFormComponents> = ({
     e.preventDefault(); // prevents page reload on submit
     const formData = new FormData(e.target as HTMLFormElement); // parse form data
     const formInputs : any = {};
-
-    console.log(requiredFields);
-    if (requiredFields) {
-      for (let i = 0; i < requiredFields.length; i++) {
-        const fieldLabel = requiredFields[i];
-        // Object.defineProperty(formInputs, fieldLabel, {
-        //   value: formData.get(fieldLabel),
-        // });
-        formInputs[`cust${fieldLabel}`] = formData.get(fieldLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
+    
+    if (submitType === 'assignment') {
+      if (requiredFields) {
+        formInputs["email"] = email;
+        for (let i = 0; i < requiredFields.length; i++) {
+          const fieldLabel = requiredFields[i];
+          if (fieldLabel === "Assignment Name") formInputs["assignmentName"] = formData.get(fieldLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
+          if (fieldLabel === "Number of Groups") formInputs["numberOfGroups"] = formData.get(fieldLabel);
+          if (fieldLabel === "Max Group Size") formInputs["maxSizeOfGroup"] = formData.get(fieldLabel);
+        }
       }
     }
+
     if (numberOfPreferences > 0) {
+      let prefArr = [];
       for (let i = 0; i < numberOfPreferences; i++) {
         const prefLabel: string = `pref${i}`;
-        // Object.defineProperty(formInputs, prefLabel, {
-        //   value: formData.get(prefLabel),
-        // });
-        formInputs[`${prefLabel}`] = formData.get(prefLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
-
+        prefArr.push(formData.get(prefLabel)); // creates new key pair in obj, e,g cust1: "Assignment1"
       }
+      formInputs["rolesRequires"] = prefArr;
     }
 
     if (numberOfSkills > 0) {
+      let skillArr = [];
       for (let i = 0; i < numberOfSkills; i++) {
         const skillLabel: string = `skill${i}`;
-        // Object.defineProperty(formInputs, skillLabel, {
-        //   value: formData.get(skillLabel),
-        // });
-        formInputs[`${skillLabel}`] = formData.get(skillLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
-
+        skillArr.push(formData.get(skillLabel)); // creates new key pair in obj, e,g cust1: "Assignment1"
       }
+      formInputs["skillsRequired"] = skillArr;
     }
     for (const [, value] of Object.entries(formInputs)) {
       if (value === "-") console.log("Please fill in all the options!");
