@@ -13,7 +13,7 @@ export const Home = () => {
 
   return (
     <div className={styles.background}>
-      <Navbar children={["about", "login", "register"]} />
+      <Navbar children={["about", "login", "register", "logout"]} />
       <div className={styles.horizontal}>
         <div className={styles.leftContainer}>
           <h2 className={styles.h2}>
