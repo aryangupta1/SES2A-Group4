@@ -41,6 +41,7 @@ const FormView = () => {
         const response = await register.json();
         if (!response.token) {
           console.log(response);
+          alert(response);
         } else {
           sessionStorage.setItem("User", user);
           sessionStorage.setItem("JWT", response["token"]);
