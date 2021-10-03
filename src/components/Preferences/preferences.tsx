@@ -11,7 +11,7 @@ export const Preferences = () => {
 
   const getPreferences = async () => {
     // fetch preferences from backend & render them into form
-    const studentPreferences = await fetch("http://localhost:8000/preferences");
+    const studentPreferences = await fetch("http://localhost:8000/students/preferences");
     let prefs = await studentPreferences.json();
     const prefRoles = [<option value="-">-</option>]; // initialise array with default value
     for (const [key, value] of Object.entries(prefs)) {
@@ -22,7 +22,7 @@ export const Preferences = () => {
   };
   const getSkills = async () => {
     // fetch skills from backend & render them into form
-    const studentSkills = await fetch("http://localhost:8000/skills");
+    const studentSkills = await fetch("http://localhost:8000/students/skills");
     let skills = await studentSkills.json();
     const skillRoles = [<option value="-">-</option>]; // initialise array with default value
     for (const [key, value] of Object.entries(skills)) {
