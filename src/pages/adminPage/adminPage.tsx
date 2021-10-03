@@ -1,37 +1,49 @@
+import { useFormControl } from "@material-ui/core";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
 import { FormComponent } from "../../components/formComponent/form";
 import { Preferences } from "../../components/Preferences/preferences";
 
 const AdminPage = () => {
-  const [owner] = useState(sessionStorage.getItem("Email"));
+  const [email] = useState(sessionStorage.getItem("Email"));
   const [numberOfGroups, setGroupNumbers] = useState(10); // Not sure if this works but create state to get and set logins when user types their information
   const [maxSizeOfGroup, setMaxSizeOfGroup] = useState(6);
   const [assignmentName, setAssignmentName] = useState("");
-  const [studentPreferences, setPreferences] = useState<JSX.Element[]>();
-  const [studentSkills, setSkills] = useState<JSX.Element[]>();
+  //const [studentPreferences, setPreferences] = useState<JSX.Element[]>();
+  // const [studentSkills, setSkills] = useState<JSX.Element[]>();
+  const [assignmentList, setAssignmentList] = useState<string[]>();
+
+  const getAssignments = async () => {
+    // fetch skills from backend & render them into form
+    const assignments = await fetch(`http://localhost:8000/assignmentsAdmin?email=${email}`);
+    let listOfAssignments = await assignments.json();
+    setAssignmentList(listOfAssignments);
+  };
+  // Only makes one request
+  useEffect(() => {
+    // this runs on page load
+    getAssignments();
+  }, []);
+
+  function refreshPage() {
+    window.location.reload();
+  }
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     try {
-    //   const getCurrentAssignments = await fetch("http://localhost:8000/:owner/admin-page", {
-    //     method: "GET",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({
-    //       owner,
-    //     }),
-    //   });
-
       const createAssignment = await fetch("http://localhost:8000/assignments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          owner,
+          email,
           numberOfGroups,
           maxSizeOfGroup,
           assignmentName,
-          studentPreferences,
-          studentSkills,
+          //studentPreferences, when preferences/skills are fixed, uncomment these
+          //studentSkills,
         }),
       });
       const response = await createAssignment.json();
@@ -39,12 +51,13 @@ const AdminPage = () => {
     } catch (error) {
       console.log(error);
     }
+    refreshPage();
   };
 
   return (
     <div>
       <div className="ui top attached menu ui centered grid">
-        <h1>Welcome {owner} to your admin dashboard</h1>
+        <h1>Welcome {email} to your admin dashboard</h1>
       </div>
       <div className="ui grid">
         <div className="four wide column">
@@ -82,6 +95,11 @@ const AdminPage = () => {
         </div>
         <div className="four wide column">
           <h1>Your current assignments</h1>
+          <h2>
+            {assignmentList?.map((assignment) => (
+              <AssignmentCard assignmentName={assignment} buttonText={"View"} isAdmin={true} />
+            ))}
+          </h2>
         </div>
       </div>
     </div>
