@@ -53,70 +53,78 @@ export const FormComponent: React.FC<IFormComponents> = ({
     // paramater takes in form data
     e.preventDefault(); // prevents page reload on submit
     const formData = new FormData(e.target as HTMLFormElement); // parse form data
-    const formInputs = {};
+    const formInputs : any = {};
 
+    console.log(requiredFields);
     if (requiredFields) {
-      for (let field in requiredFields) {
-        const fieldLabel = field;
-        Object.defineProperty(formInputs, fieldLabel, {
-          value: formData.get(fieldLabel),
-        });
+      for (let i = 0; i < requiredFields.length; i++) {
+        const fieldLabel = requiredFields[i];
+        // Object.defineProperty(formInputs, fieldLabel, {
+        //   value: formData.get(fieldLabel),
+        // });
+        formInputs[`cust${fieldLabel}`] = formData.get(fieldLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
       }
     }
     if (numberOfPreferences > 0) {
-      for (let index = 0; index < numberOfPreferences; index++) {
-        const prefLabel: string = "pref" + (index + 1).toString();
-        Object.defineProperty(formInputs, prefLabel, {
-          value: formData.get(prefLabel),
-        });
+      for (let i = 0; i < numberOfPreferences; i++) {
+        const prefLabel: string = `pref${i}`;
+        // Object.defineProperty(formInputs, prefLabel, {
+        //   value: formData.get(prefLabel),
+        // });
+        formInputs[`${prefLabel}`] = formData.get(prefLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
+
       }
     }
 
     if (numberOfSkills > 0) {
-      for (let index = 0; index < numberOfSkills; index++) {
-        const skillLabel: string = "skill" + (index + 1).toString();
-        Object.defineProperty(formInputs, skillLabel, {
-          value: formData.get(skillLabel),
-        });
+      for (let i = 0; i < numberOfSkills; i++) {
+        const skillLabel: string = `skill${i}`;
+        // Object.defineProperty(formInputs, skillLabel, {
+        //   value: formData.get(skillLabel),
+        // });
+        formInputs[`${skillLabel}`] = formData.get(skillLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
+
       }
     }
     for (const [, value] of Object.entries(formInputs)) {
       if (value === "-") console.log("Please fill in all the options!");
     }
+
+    console.log(formInputs);
   };
 
   return (
     <div className="ui grid">
       <div>
         <form className="preferencesForm" onSubmit={(e) => submitForm(e)}>
-          {requiredFields.length > 0 &&
-            requiredFields.map((field) => (
-              <div className="form-input">
-                <label>{field}</label>
-                <input className="input" name={field} />
-              </div>
-            ))}
-          <div className="preferencesFormDiv">
-            {numberOfPreferences > 0 && <h3 className="topText">Preferences</h3>}
+          <div className="formWrapper">
+            <div className="form-input">
+            {requiredFields.length > 0 &&
+              requiredFields.map((field) => (
+                <div>
+                  <p>{field}</p> 
+                  <input className="input" name={field} />
+                </div>
+              ))}
+            </div>
+          <div className="preferencesForm">
+          <h3>Preferences</h3>
             {numberOfPreferences > 0 &&
-              Array.from(Array.from({ length: numberOfPreferences }, (_, i) => i + 1)).map((preference) => (
-                <label>
-                  {"Preference " + preference}
-                  <select id={"pref" + preference} name={"pref" + preference}>
-                    {studentPreferences}
-                  </select>
-                </label>
+              Array.from(Array.from({ length: numberOfPreferences }, (_, i) => i)).map((preference) => (
+                <div>
+                  <p> {"Preference " + preference} </p>
+                  <select id={"pref" + preference} name={"pref" + preference}> {studentPreferences} </select>
+                </div>
               ))}
-            {numberOfSkills > 0 && <h3 className="topText">Skills</h3>}
+              <h3>Skills</h3>
             {numberOfSkills > 0 &&
-              Array.from(Array.from({ length: numberOfSkills }, (_, i) => i + 1)).map((skill) => (
-                <label>
-                  {"Skill " + skill}
-                  <select id={"pref" + skill} name={"pref" + skill}>
-                    {studentSkills}
-                  </select>
-                </label>
+              Array.from(Array.from({ length: numberOfSkills }, (_, i) => i)).map((skill) => (
+                <div>
+                  <p> {"Skill " + skill} </p>
+                  <select id={"skill" + skill} name={"skill" + skill}> {studentSkills} </select>
+                </div>
               ))}
+          </div>
           </div>
           <Button color="violet" type="submit">
             {submitButtonText}
