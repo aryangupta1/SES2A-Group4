@@ -16,29 +16,41 @@ const PageAnimation = () => {
 
 const FormView = () => {
   const history = useHistory();
-  const [registerInfo, setRegister] = useState({ email: "", password: "" });
+  const [registerInfo, setRegister] = useState({ email: "", password: "" , passwordConfirm:""});
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    setRegister({ email: "", password: "" });
+    setRegister({ email: "", password: "" , passwordConfirm: ""});
     try {
-      //Check if admin or student
-      const isAdmin: boolean = registerInfo.email.includes("@link.com.au");
-      let user = isAdmin ? "Admin" : "Student";
-      let url = isAdmin ? "http://localhost:8000/auth/register/admin" : "http://localhost:8000/auth/register";
-      const register = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(registerInfo),
-      });
-      const response = await register.json();
-      if (!response.token) {
-        console.log(response);
-      } else {
-        sessionStorage.setItem("User", user);
-        sessionStorage.setItem("JWT", response["token"]);
-        sessionStorage.setItem("Email", registerInfo.email);
-        let nextPage = user === "Admin" ? "/admin-page" : "/preferences";
-        history.push(nextPage);
+      //Check if passwords match
+      if(registerInfo.password !== registerInfo.passwordConfirm){
+        //Use this message for error UI
+        alert('Passwords do not match');
+        //Refresh page  
+        window.location.reload();
+      }
+      else{
+        //Check if admin or student
+        const isAdmin: boolean = registerInfo.email.includes("@link.com.au");
+        let user = isAdmin ? "Admin" : "Student";
+        let url = isAdmin ? "http://localhost:8000/auth/register/admin" : "http://localhost:8000/auth/register";
+        const register = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(registerInfo),
+        });
+        const response = await register.json();
+        if (!response.token) {
+          console.log(response);
+          alert(response);
+          //Refresh page  
+          window.location.reload();
+        } else {
+          sessionStorage.setItem("User", user);
+          sessionStorage.setItem("JWT", response["token"]);
+          sessionStorage.setItem("Email", registerInfo.email);
+          let nextPage = user === "Admin" ? "/admin-page" : "/preferences";
+          history.push(nextPage);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -58,14 +70,16 @@ const FormView = () => {
         </Form.Field>
         <Form.Field style={{ display: "flex", flexDirection: "column" }}>
           <label className="label">Password</label>
-          <input className="input" type="password" />
+          <input className="input" type="password"             
+          onChange={(e) => setRegister({ ...registerInfo, password: e.target.value })}
+          />
         </Form.Field>
         <Form.Field style={{ display: "flex", flexDirection: "column" }}>
           <label className="label">Re-enter Password</label>
           <input
             className="input"
             type="password"
-            onChange={(e) => setRegister({ ...registerInfo, password: e.target.value })}
+            onChange={(e) => setRegister({ ...registerInfo, passwordConfirm: e.target.value })}
           />
         </Form.Field>
         <div style={{ alignSelf: "center", marginTop: "30px" }}>
