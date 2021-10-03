@@ -8,7 +8,7 @@ import StudentPage from "./pages/studentPage/studentPage";
 import { PreferencesPage } from "./pages/PreferencesPage/PreferencesPage";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
 import AdminPage from "./pages/adminPage/adminPage";
-
+ 
 //In future need to create route checks specific for admin users
 const requireJWT = (to: any, from: any, next: any) => {
   if (to.meta.auth) {
@@ -34,11 +34,22 @@ const adminOnly = (to: any, from: any, next: any) => {
   }
 }
 
+const logout = (to: any, from: any, next: any) => {
+  if(to.meta.auth === 'logout'){
+    sessionStorage.removeItem('Email');
+    sessionStorage.removeItem('JWT');
+    next.redirect("/");
+  }
+  else{
+    next();
+  }
+}
+
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <GuardProvider guards={[requireJWT, adminOnly]}>
+        <GuardProvider guards={[requireJWT, adminOnly, logout]}>
           <Switch>
             <GuardedRoute path="/" component={Home} exact />
             <GuardedRoute path="/about" component={About} />
@@ -47,6 +58,7 @@ class App extends Component {
             <GuardedRoute path="/admin-page" component={AdminPage}  meta={{ auth: true && 'RequireAdmin' }}/>
             <GuardedRoute path="/Register" component={Register} />
             <GuardedRoute path="/preferences" component={PreferencesPage} meta={{ auth: true }} />
+            <GuardedRoute path="/logout" meta={{auth: 'logout'}}/>
           </Switch>
         </GuardProvider>
       </BrowserRouter>
