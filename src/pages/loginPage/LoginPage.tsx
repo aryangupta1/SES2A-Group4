@@ -33,10 +33,14 @@ const LoginForm = () => {
         history.push(nextPage);
       }
       else{
-        console.log(response);
+        alert(response);
+        //Refresh page  
+        window.location.reload();
       }
     } catch (error) {
-      console.error(error);
+      alert(error);
+      //Refresh page  
+      window.location.reload();
     }
   };
   return (
