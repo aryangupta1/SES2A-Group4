@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import teamImage from "../../images/teamwork-1.svg";
+import teamImage from "../../images/register.png";
 import "./Register.css";
 import { Button, Radio, Form, Grid } from "semantic-ui-react";
 import { Image } from "semantic-ui-react";
@@ -60,7 +60,7 @@ const FormView = () => {
     <div className="rightContainer">
       <form className="registration-form" onSubmit={(e) => handleSubmit(e)}>
         <h2 className="h2">Create your Profile</h2>
-        <Form.Field style={{ display: "flex", flexDirection: "column" }}>
+        <Form.Field style={{ display: "flex", flexDirection: "column" }} >
           <label className="label">Email</label>
           <input
             className="input"
