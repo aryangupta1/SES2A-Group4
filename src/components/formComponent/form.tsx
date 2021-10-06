@@ -52,46 +52,63 @@ export const FormComponent: React.FC<IFormComponents> = ({
     getSkills();
   }, []);
 
-  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     // paramater takes in form data
     e.preventDefault(); // prevents page reload on submit
     const formData = new FormData(e.target as HTMLFormElement); // parse form data
     const formInputs : any = {};
-    
+    let assignmentName, maxSizeOfGroup, numberOfGroups, rolesRequired = [], skillsRequired = []; // initialise variables to be given data later
     if (submitType === 'assignment') {
       if (requiredFields) {
         formInputs["email"] = email;
         for (let i = 0; i < requiredFields.length; i++) {
           const fieldLabel = requiredFields[i];
-          if (fieldLabel === "Assignment Name") formInputs["assignmentName"] = formData.get(fieldLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
-          if (fieldLabel === "Number of Groups") formInputs["numberOfGroups"] = formData.get(fieldLabel);
-          if (fieldLabel === "Max Group Size") formInputs["maxSizeOfGroup"] = formData.get(fieldLabel);
+          if (fieldLabel === "Assignment Name") assignmentName = formData.get(fieldLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
+          if (fieldLabel === "Number of Groups") maxSizeOfGroup = formData.get(fieldLabel);
+          if (fieldLabel === "Max Group Size") numberOfGroups = formData.get(fieldLabel);
         }
       }
     }
 
     if (numberOfPreferences > 0) {
-      let prefArr = [];
       for (let i = 0; i < numberOfPreferences; i++) {
         const prefLabel: string = `pref${i}`;
-        prefArr.push(formData.get(prefLabel)); // creates new key pair in obj, e,g cust1: "Assignment1"
+        rolesRequired.push(formData.get(prefLabel)); // creates new key pair in obj, e,g cust1: "Assignment1"
       }
-      formInputs["rolesRequires"] = prefArr;
     }
 
     if (numberOfSkills > 0) {
-      let skillArr = [];
       for (let i = 0; i < numberOfSkills; i++) {
         const skillLabel: string = `skill${i}`;
-        skillArr.push(formData.get(skillLabel)); // creates new key pair in obj, e,g cust1: "Assignment1"
+        skillsRequired.push(formData.get(skillLabel)); // creates new key pair in obj, e,g cust1: "Assignment1"
       }
-      formInputs["skillsRequired"] = skillArr;
     }
     for (const [, value] of Object.entries(formInputs)) {
       if (value === "-") console.log("Please fill in all the options!");
     }
 
     console.log(formInputs);
+      e.preventDefault();
+  
+      try {
+        const createAssignment = await fetch("http://localhost:8000/assignments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            assignmentName,
+            maxSizeOfGroup,
+            numberOfGroups,
+            rolesRequired,
+            skillsRequired 
+            
+          }),
+        });
+        const response = await createAssignment.json();
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+      // refreshPage();
   };
 
   return (
