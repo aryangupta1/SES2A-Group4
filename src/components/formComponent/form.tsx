@@ -9,6 +9,7 @@ export interface IFormComponents {
   numberOfPreferences?: number;
   submitButtonText?: string;
   onSubmit: any;
+  submitType: string;
 }
 
 export const FormComponent: React.FC<IFormComponents> = ({
@@ -16,9 +17,11 @@ export const FormComponent: React.FC<IFormComponents> = ({
   numberOfSkills = 0,
   numberOfPreferences = 0,
   submitButtonText = "Submit",
+  submitType
 }) => {
   const [studentPreferences, setPreferences] = useState<JSX.Element[]>();
   const [studentSkills, setSkills] = useState<JSX.Element[]>();
+  const [email] = useState(sessionStorage.getItem('Email'));
 
   const getPreferences = async () => {
     // fetch preferences from backend & render them into form
@@ -49,41 +52,35 @@ export const FormComponent: React.FC<IFormComponents> = ({
     getSkills();
   }, []);
 
-  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     // paramater takes in form data
     e.preventDefault(); // prevents page reload on submit
     const formData = new FormData(e.target as HTMLFormElement); // parse form data
     const formInputs : any = {};
-
-    console.log(requiredFields);
-    if (requiredFields) {
-      for (let i = 0; i < requiredFields.length; i++) {
-        const fieldLabel = requiredFields[i];
-        // Object.defineProperty(formInputs, fieldLabel, {
-        //   value: formData.get(fieldLabel),
-        // });
-        formInputs[`cust${fieldLabel}`] = formData.get(fieldLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
+    let assignmentName, maxSizeOfGroup, numberOfGroups, rolesRequired = [], skillsRequired = []; // initialise variables to be given data later
+    if (submitType === 'assignment') {
+      if (requiredFields) {
+        formInputs["email"] = email;
+        for (let i = 0; i < requiredFields.length; i++) {
+          const fieldLabel = requiredFields[i];
+          if (fieldLabel === "Assignment Name") assignmentName = formData.get(fieldLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
+          if (fieldLabel === "Number of Groups") maxSizeOfGroup = formData.get(fieldLabel);
+          if (fieldLabel === "Max Group Size") numberOfGroups = formData.get(fieldLabel);
+        }
       }
     }
+
     if (numberOfPreferences > 0) {
       for (let i = 0; i < numberOfPreferences; i++) {
         const prefLabel: string = `pref${i}`;
-        // Object.defineProperty(formInputs, prefLabel, {
-        //   value: formData.get(prefLabel),
-        // });
-        formInputs[`${prefLabel}`] = formData.get(prefLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
-
+        rolesRequired.push(formData.get(prefLabel)); // creates new key pair in obj, e,g cust1: "Assignment1"
       }
     }
 
     if (numberOfSkills > 0) {
       for (let i = 0; i < numberOfSkills; i++) {
         const skillLabel: string = `skill${i}`;
-        // Object.defineProperty(formInputs, skillLabel, {
-        //   value: formData.get(skillLabel),
-        // });
-        formInputs[`${skillLabel}`] = formData.get(skillLabel); // creates new key pair in obj, e,g cust1: "Assignment1"
-
+        skillsRequired.push(formData.get(skillLabel)); // creates new key pair in obj, e,g cust1: "Assignment1"
       }
     }
     for (const [, value] of Object.entries(formInputs)) {
@@ -91,6 +88,27 @@ export const FormComponent: React.FC<IFormComponents> = ({
     }
 
     console.log(formInputs);
+      e.preventDefault();
+  
+      try {
+        const createAssignment = await fetch("http://localhost:8000/assignments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            assignmentName,
+            maxSizeOfGroup,
+            numberOfGroups,
+            rolesRequired,
+            skillsRequired 
+            
+          }),
+        });
+        const response = await createAssignment.json();
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+      // refreshPage();
   };
 
   return (
