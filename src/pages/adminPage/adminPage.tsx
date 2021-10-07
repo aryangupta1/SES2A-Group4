@@ -1,18 +1,16 @@
 import { useFormControl } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Button } from "semantic-ui-react";
+import { forEachChild } from "typescript";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
 import { FormComponent } from "../../components/formComponent/form";
 import { Preferences } from "../../components/Preferences/preferences";
 
 const AdminPage = () => {
   const [email] = useState(sessionStorage.getItem("Email"));
-  const [numberOfGroups, setGroupNumbers] = useState(10); // Not sure if this works but create state to get and set logins when user types their information
-  const [maxSizeOfGroup, setMaxSizeOfGroup] = useState(6);
-  const [assignmentName, setAssignmentName] = useState("");
-  //const [studentPreferences, setPreferences] = useState<JSX.Element[]>();
-  // const [studentSkills, setSkills] = useState<JSX.Element[]>();
   const [assignmentList, setAssignmentList] = useState<string[]>();
+  const [adminName, setAdminName] = useState<any>();
 
   const getAssignments = async () => {
     // fetch skills from backend & render them into form
@@ -20,39 +18,18 @@ const AdminPage = () => {
     let listOfAssignments = await assignments.json();
     setAssignmentList(listOfAssignments);
   };
+
+  const getAdminDetailsName = async () => {
+    const adminName = await fetch(`http://localhost:8000/adminDetailsName?email=${email}`);
+    let admin = await adminName.json();
+    setAdminName(admin);
+  };
   // Only makes one request
   useEffect(() => {
-    // this runs on page load
+    //this runs on page load
+    getAdminDetailsName();
     getAssignments();
   }, []);
-
-  function refreshPage() {
-    window.location.reload();
-  }
-
-  const handleSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-
-    try {
-      const createAssignment = await fetch("http://localhost:8000/assignments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          numberOfGroups,
-          maxSizeOfGroup,
-          assignmentName,
-          //studentPreferences, when preferences/skills are fixed, uncomment these
-          //studentSkills,
-        }),
-      });
-      const response = await createAssignment.json();
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-    refreshPage();
-  };
 
   return (
     <div>
@@ -61,37 +38,21 @@ const AdminPage = () => {
       </div>
       <div className="ui grid">
         <div className="four wide column">
+          <h2>Here, you can edit your details, create a new assignment, or view your existing assignments!</h2>
+        </div>
+        <div className="four wide column">
+          <h2>Admin Details</h2>
+        </div>
+
+        <div className="four wide column">
           <FormComponent
             onSubmit="handleSubmit"
             numberOfPreferences={3}
             numberOfSkills={3}
-            submitButtonText="it works"
+            submitButtonText="Create!"
+            submitType="assignment"
             requiredFields={["Assignment Name", "Number of Groups", "Max Group Size"]}
           />
-        </div>
-        <div className="four wide column"></div>
-        <div className="four wide column">
-          <h2>Create an assignment below!</h2>
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="form-input">
-              <label>Assignment Name</label>
-              <input className="input" onChange={(e) => setAssignmentName(e.target.value)} />
-            </div>
-            <div className="form-input">
-              <label>Number of Groups</label>
-              <input type="input" className="input" onChange={(e) => setGroupNumbers(parseInt(e.target.value))} />
-            </div>
-            <div className="form-input">
-              <label>Max size of each group</label>
-              <input className="input" onChange={(e) => setMaxSizeOfGroup(parseInt(e.target.value))} />
-            </div>
-
-            <div className="form-label">
-              <button className="button" type="submit">
-                Create Assignment!
-              </button>
-            </div>
-          </form>
         </div>
         <div className="four wide column">
           <h1>Your current assignments</h1>
