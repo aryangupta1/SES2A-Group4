@@ -28,6 +28,7 @@ const LoginForm = () => {
       sessionStorage.setItem('Email', email);
       if(response.token){
         sessionStorage.setItem('JWT', response["token"]);
+        sessionStorage.setItem('User', user);
         console.log('Successs');
         let nextPage = (user === "Admin")? '/admin-page': '/student-page';
         history.push(nextPage);
