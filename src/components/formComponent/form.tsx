@@ -30,7 +30,7 @@ export const FormComponent: React.FC<IFormComponents> = ({
     const prefRoles = [<option value="-">-</option>]; // initialise array with default value
     for (const [key, value] of Object.entries(prefs)) {
       // for each key and value inside object
-      prefRoles.push(<option value={key}>{`${value}`}</option>); // create a tag for the form with the values
+      prefRoles.push(<option key={key}>{`${value}`}</option>); // create a tag for the form with the values
     }
     setPreferences(prefRoles);
   };
@@ -41,7 +41,7 @@ export const FormComponent: React.FC<IFormComponents> = ({
     const skillRoles = [<option value="-">-</option>]; // initialise array with default value
     for (const [key, value] of Object.entries(skills)) {
       // for each key and value inside object
-      skillRoles.push(<option value={key}>{`${value}`}</option>); // create a tag for the form with the values
+      skillRoles.push(<option key={key}>{`${value}`}</option>); // create a tag for the form with the values
     }
     setSkills(skillRoles);
   };
