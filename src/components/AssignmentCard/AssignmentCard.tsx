@@ -15,7 +15,7 @@ const AssignmentCard: React.FC<IAssignmentProps> = ({ assignmentName, descriptio
   const history = useHistory();
   let button;
   if (isAdmin) {
-    button = <Button onClick={() => history.push(`/${assignmentName}`)}>{buttonText}</Button>;
+    button = <Button onClick={() => history.push(`/assignment?${assignmentName}`)}>{buttonText}</Button>;
   } else {
     button = <Button onClick={() => history.push(`/${assignmentName}`)}>{buttonText} </Button>; // Need to change this for student later
   }

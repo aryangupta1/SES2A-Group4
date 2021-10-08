@@ -8,6 +8,7 @@ import StudentPage from "./pages/studentPage/studentPage";
 import { PreferencesPage } from "./pages/PreferencesPage/PreferencesPage";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
 import AdminPage from "./pages/adminPage/adminPage";
+import AssignmentPage from "./pages/assignmentPage/assignmentPage";
  
 //In future need to create route checks specific for admin users
 const requireJWT = (to: any, from: any, next: any) => {
@@ -59,6 +60,7 @@ class App extends Component {
             <GuardedRoute path="/Register" component={Register} />
             <GuardedRoute path="/preferences" component={PreferencesPage} meta={{ auth: true }} />
             <GuardedRoute path="/logout" meta={{auth: 'logout'}}/>
+            <GuardedRoute path="/assignment" component={AssignmentPage} meta={{auth: true && 'RequireAdmin'}}/>
           </Switch>
         </GuardProvider>
       </BrowserRouter>
