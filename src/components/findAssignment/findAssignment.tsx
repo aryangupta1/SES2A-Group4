@@ -1,8 +1,6 @@
 import "semantic-ui-css/semantic.min.css";
-import React, { useState } from "react";
-import { Button } from "semantic-ui-react";
 import "./findAssignment.css";
-import { useHistory } from "react-router-dom";
+
 
 
 function findAssignment()  {
