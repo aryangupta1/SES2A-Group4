@@ -17,25 +17,17 @@
   padding: 8px;
 }
 
-.success {
-  background-color: #04aa6d;
-} /* Green */
-.info {
-  background-color: #2196f3;
-} /* Blue */
-.warning {
-  background-color: #ff9800;
-} /* Orange */
-.danger {
-  background-color: #f44336;
-} /* Red */
-.other {
-  background-color: #e7e7e7;
-  color: black;
-} /* Gray */
-.admin {
-  background-color: blueviolet;
-}
+.topText {
+  color: #FFFFFF;
+  position: relative;
+  margin-bottom: 3.5%;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 250%;
+  line-height: 40px;
+} 
+
 
 .center {
   display: flex;
@@ -70,18 +62,42 @@ select:focus {
   height: auto;
 }
 
-.image-container {
-  background: linear-gradient(180deg, rgba(136, 74, 237, 0.8) 0%, #387f9a 100%);
-  border-radius: 20px;
-  position: relative;
-  width: 720px;
-  height: 944px;
+
+.form {
+  margin-left:50%;
+}
+
+  .illustration {
+    max-height: 55%;
+    max-width: 70%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.flex-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4.5%;
+  text-align: center;
+
+}
+
+
+.Rectangle {
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  left: 39px;
-  top: 40px;
+  background: linear-gradient(180deg, rgba(136, 74, 237, 0.8) 0%, #387F9A 100%);
+  border-radius: 20px;
+  position: absolute;
+  width: 40%;
+  height: 90%;
+  left: 2%;
+  top: 4.5%;
 }
 
 .rightContainer {
