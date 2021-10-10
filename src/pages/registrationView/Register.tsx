@@ -7,9 +7,9 @@ import { useHistory } from "react-router-dom";
 
 const PageAnimation = () => {
   return (
-    <div className="image-container">
-      <h1 className="title">Come Join Us!</h1>
-      <Image className="img" src={teamImage} alt="Team Work" />
+    <div className="Rectangle">
+      <h1 className="topText">Come Join Us!</h1>
+      <Image className="illustration" src={teamImage} alt="Team Work" />
     </div>
   );
 };
@@ -101,9 +101,11 @@ const FormView = () => {
 
 export const Register = () => {
   return (
-    <div className="registration-page">
+    <div className="flex-wrapper">
       <PageAnimation />
+      <div className="form">
       <FormView />
+      </div>
     </div>
   );
 };
