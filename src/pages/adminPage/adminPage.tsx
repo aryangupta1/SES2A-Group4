@@ -1,5 +1,5 @@
 import { useFormControl } from "@material-ui/core";
-import axios from "axios";
+/* import axios from "axios"; */
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "semantic-ui-react";
 import { forEachChild } from "typescript";
@@ -21,6 +21,7 @@ const AdminPage = () => {
     const assignments = await fetch(`http://localhost:8000/assignmentsAdmin?email=${email}`);
     let listOfAssignments = await assignments.json();
     setAssignmentList(listOfAssignments);
+    console.log(assignmentList);
   };
 
   const getAdminDetailsName = async () => {
