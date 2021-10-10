@@ -137,7 +137,7 @@ export const FormComponent: React.FC<IFormComponents> = ({
               {numberOfPreferences > 0 &&
                 Array.from(Array.from({ length: numberOfPreferences }, (_, i) => i)).map((preference) => (
                   <div>
-                    <p> {"Preference " + preference} </p>
+                    <p> {"Preference " + (preference + 1)} </p>
                     <select id={"pref" + preference} name={"pref" + preference}>
                       {" "}
                       {studentPreferences}{" "}
@@ -148,7 +148,7 @@ export const FormComponent: React.FC<IFormComponents> = ({
               {numberOfSkills > 0 &&
                 Array.from(Array.from({ length: numberOfSkills }, (_, i) => i)).map((skill) => (
                   <div>
-                    <p> {"Skill " + skill} </p>
+                    <p> {"Skill " + (skill + 1)} </p>
                     <select id={"skill" + skill} name={"skill" + skill}>
                       {" "}
                       {studentSkills}{" "}
