@@ -20,6 +20,7 @@ const AdminPage = () => {
     // fetch skills from backend & render them into form
     const assignments = await fetch(`http://localhost:8000/assignmentsAdmin?email=${email}`);
     let listOfAssignments = await assignments.json();
+    console.log(listOfAssignments);
     setAssignmentList(listOfAssignments);
     console.log(assignmentList);
   };
