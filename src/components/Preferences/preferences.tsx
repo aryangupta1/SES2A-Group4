@@ -82,7 +82,12 @@ export const Preferences = () => {
         <p>Skill Preference </p> <select id="pref1" name="pref1"> {studentSkills} </select><br></br>
         <p>Skill Preference 2</p> <select id="pref2" name="pref2"> {studentSkills} </select>
         <br></br>
-        <Button color="violet" type="submit"> Submit! </Button>
+        <Button
+            style={{ backgroundColor: "rgba(136, 74, 237, 0.8)", color: "rgb(255, 255, 255)", borderRadius: "30px" }}
+            type="submit"
+          >
+            Submit!
+          </Button>
     </form>
 )
 };

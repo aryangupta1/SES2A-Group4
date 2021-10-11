@@ -1,4 +1,22 @@
 .studentContainer {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.assignmentGrid{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: center;
+}
+
+.assignmentContainer{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin: 48px;
 }
