@@ -5,6 +5,7 @@ import { Button, Modal } from "semantic-ui-react";
 import { forEachChild } from "typescript";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
 import { FormComponent } from "../../components/formComponent/form";
+import Navbar from "../../components/NavBar/Navbar";
 import { Preferences } from "../../components/Preferences/preferences";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import styles from "./adminPage.module.css";
@@ -38,8 +39,9 @@ const AdminPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.background}>
       <div className={styles.header}>
+      <Navbar children={["about", "login", "register", "logout"]} />
         <div className={styles.heading}>Find Assignment</div>
         <div className={styles.subheading}>Welcome {email}</div>
         <div className={styles.subheading}>
