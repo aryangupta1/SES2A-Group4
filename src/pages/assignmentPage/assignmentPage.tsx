@@ -1,7 +1,9 @@
 import { group } from "console";
 import { useEffect, useState } from "react";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
+import Navbar from "../../components/NavBar/Navbar";
 import styles from "../adminPage/adminPage.module.css";
+import background from "../assignmentPage/assignmentPage.module.css";
 
 const AssignmentPage = () => {
     const [groups, setGroups] = useState<[]>();
@@ -37,7 +39,9 @@ const AssignmentPage = () => {
 
     //Someone please style this later :-)
     return(
+    <div className={background.background}>
         <div className="four wide column">
+            <Navbar children={["about", "login", "register", "logout"]} />
             <h1>Assignment : {assignmentName}</h1>
               <div className={styles.assignmentContainer}>
               <div className={styles.assignmentGrid}>
@@ -48,6 +52,7 @@ const AssignmentPage = () => {
               </div>
             </div>
         </div>
+    </div>
     )
 }
 
