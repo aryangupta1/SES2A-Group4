@@ -1,0 +1,9 @@
+.background{
+    background-image: linear-gradient(#387F9A, #D9E4EA);
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    padding: 0px 96px 0px 96px;
+  }
