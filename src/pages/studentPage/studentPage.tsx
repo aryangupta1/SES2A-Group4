@@ -35,7 +35,7 @@ const StudentPage = () => {
               <AssignmentCard assignmentName={assignment} buttonText={"View"} isAdmin={true} />
             ))}  */}
           {assignments?.map((assignment) => (
-            <AssignmentCard assignmentName={assignment["assignmentName"]} buttonText={"View"} isAdmin={false} />
+            <AssignmentCard assignmentName={assignment["assignmentName"]} buttonText={"Join"} isAdmin={false} />
           ))}
         </div>
       </div>
