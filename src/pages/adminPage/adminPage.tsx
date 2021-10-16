@@ -62,7 +62,7 @@ const AdminPage = () => {
             onSubmit="handleSubmit"
             numberOfPreferences={3}
             numberOfSkills={3}
-            submitButtonText="Create!"
+            submitButtonText="CREATE!"
             submitType="assignment"
             requiredFields={["Assignment Name", "Number of Groups", "Max Group Size"]}
           />
