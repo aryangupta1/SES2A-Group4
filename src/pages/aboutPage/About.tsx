@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, Image } from "semantic-ui-react";
 import styles from "./About.module.css";
 import headshot from "../../images/headshot.jpg";
-import Navbar from "../../components/NavBar/Navbar";
+import Navbar from "../../components/navBar/Navbar";
 import { useHistory } from "react-router-dom";
 
 export const About = () => {
