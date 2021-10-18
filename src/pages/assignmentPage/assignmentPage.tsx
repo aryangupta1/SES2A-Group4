@@ -25,7 +25,7 @@ const AssignmentPage = () => {
         setId(groupIds);
     };
     const getStudentInGroup = async () =>{
-        groupIds?.forEach(async (id) => {
+        await groupIds?.forEach(async (id) => {
             const getStudents = await fetch(`http://localhost:8000/assignments/${id}/${assignmentName}/students`)
             const students = await getStudents.json();
             sessionStorage.setItem(`${id}`, await students);
@@ -35,7 +35,6 @@ const AssignmentPage = () => {
         getAssignment();
         getStudentInGroup();
     }, []);
-    getStudentInGroup();
 
     //Someone please style this later :-)
     return(
