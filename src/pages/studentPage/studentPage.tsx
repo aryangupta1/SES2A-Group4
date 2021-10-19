@@ -25,10 +25,11 @@ const StudentPage = () => {
   return (
     <div className="studentContainer">
       <Sidebar />
+      <div className="contentContainer">
       <h1>Welcome {email} to your student dashboard</h1>
       <Search />
-      <div className="assignment-container">
-        <div className="assignment-grid">
+      <div className="assignmentContainer">
+        <div className="assignmentGrid">
           {/*         {assignments
             ?.filter((assignment) => assignment.toLowerCase().includes(search.toLowerCase()))
             .map((assignment) => (
@@ -38,6 +39,7 @@ const StudentPage = () => {
             <AssignmentCard assignmentName={assignment["assignmentName"]} buttonText={"Join"} isAdmin={false} />
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

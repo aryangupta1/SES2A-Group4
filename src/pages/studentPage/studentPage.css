@@ -1,10 +1,7 @@
-.studentContainer {
+.studentContainer {    
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .assignmentGrid{
@@ -19,4 +16,7 @@
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     margin: 48px;
+}
+.contentContainer{
+    margin-left: 200px;
 }
