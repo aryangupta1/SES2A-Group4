@@ -26,7 +26,15 @@ const StudentPage = () => {
     <div className="studentContainer">
       <Sidebar />
       <h1>Welcome {email} to your student dashboard</h1>
-      <input onChange={(e) => setSearch(e.target.value)} />
+      <div className="searchContainer">
+        <div>
+      <div className="searchHeading">Find Assignment</div>
+      <div className="searchSubheading">
+        Here, you can edit your details, create a new assignment, or view your existing assignments!
+      </div>
+      <input className="searchInput" onChange={(e) => setSearch(e.target.value)} />
+      </div>
+    </div>
       <div className="assignment-container">
         <div className="assignment-grid">
           {assignmentList
