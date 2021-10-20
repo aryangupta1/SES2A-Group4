@@ -1,7 +1,7 @@
 import { group } from "console";
 import { useEffect, useState } from "react";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
-import Navbar from "../../components/navBar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import styles from "../adminPage/adminPage.module.css";
 import background from "../assignmentPage/assignmentPage.module.css";
 
