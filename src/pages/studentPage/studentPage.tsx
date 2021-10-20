@@ -7,14 +7,14 @@ import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
 const StudentPage = () => {
   const [email] = useState(sessionStorage.getItem("Email"));
   const [search, setSearch] = useState("");
-  const [assignments, setAssignments] = useState<[]>();
+  const [assignmentList, setAssignmentList] = useState<any[]>();
 
   const getAssignments = async () => {
     // fetch skills from backend & render them into form
     const assignments = await fetch(`http://localhost:8000/assignments`);
     let listOfAssignments = await assignments.json();
-    setAssignments(listOfAssignments);
-    console.log(listOfAssignments);
+    setAssignmentList(listOfAssignments);
+    console.log("Assignments", listOfAssignments);
   };
 
   useEffect(() => {
@@ -26,17 +26,22 @@ const StudentPage = () => {
     <div className="studentContainer">
       <Sidebar />
       <h1>Welcome {email} to your student dashboard</h1>
-      <Search />
+      <div className="searchContainer">
+        <div>
+      <div className="searchHeading">Find Assignment</div>
+      <div className="searchSubheading">
+        Here, you can edit your details, create a new assignment, or view your existing assignments!
+      </div>
+      <input className="searchInput" onChange={(e) => setSearch(e.target.value)} />
+      </div>
+    </div>
       <div className="assignment-container">
         <div className="assignment-grid">
-          {/*         {assignments
-            ?.filter((assignment) => assignment.toLowerCase().includes(search.toLowerCase()))
+          {assignmentList
+            ?.filter((assignment) => assignment["assignmentName"].toLowerCase().includes(search.toLowerCase()))
             .map((assignment) => (
-              <AssignmentCard assignmentName={assignment} buttonText={"View"} isAdmin={true} />
-            ))}  */}
-          {assignments?.map((assignment) => (
-            <AssignmentCard assignmentName={assignment["assignmentName"]} buttonText={"Join"} isAdmin={false} />
-          ))}
+              <AssignmentCard assignmentName={assignment["assignmentName"]} buttonText={"View"} isAdmin={true} />
+            ))}
         </div>
       </div>
     </div>
