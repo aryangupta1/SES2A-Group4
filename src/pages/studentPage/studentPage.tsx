@@ -25,23 +25,25 @@ const StudentPage = () => {
   return (
     <div className="studentContainer">
       <Sidebar />
-      <h1>Welcome {email} to your student dashboard</h1>
-      <div className="searchContainer">
-        <div>
-      <div className="searchHeading">Find Assignment</div>
-      <div className="searchSubheading">
-        Here, you can edit your details, create a new assignment, or view your existing assignments!
-      </div>
-      <input className="searchInput" onChange={(e) => setSearch(e.target.value)} />
-      </div>
-    </div>
-      <div className="assignment-container">
-        <div className="assignment-grid">
-          {assignmentList
-            ?.filter((assignment) => assignment["assignmentName"].toLowerCase().includes(search.toLowerCase()))
-            .map((assignment) => (
-              <AssignmentCard assignmentName={assignment["assignmentName"]} buttonText={"View"} isAdmin={true} />
-            ))}
+      <div className="contentContainer">
+        <h1>Welcome {email} to your student dashboard</h1>
+        <div className="searchContainer">
+          <div>
+            <div className="searchHeading">Find Assignment</div>
+            <div className="searchSubheading">
+              Here, you can edit your details, create a new assignment, or view your existing assignments!
+            </div>
+            <input className="searchInput" onChange={(e) => setSearch(e.target.value)} />
+          </div>
+        </div>
+        <div className="assignmentContainer">
+          <div className="assignmentGrid">
+            {assignmentList
+              ?.filter((assignment) => assignment["assignmentName"].toLowerCase().includes(search.toLowerCase()))
+              .map((assignment) => (
+                <AssignmentCard assignmentName={assignment["assignmentName"]} buttonText={"View"} isAdmin={true} />
+              ))}
+          </div>
         </div>
       </div>
     </div>
