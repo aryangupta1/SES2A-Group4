@@ -53,17 +53,16 @@ label:focus{
 }
 
 .container { 
-  background: linear-gradient(180deg, rgba(136, 74, 237, 0.8) 0%, #387F9A 100%);
-  border-radius: 20px;
-  position: relative;
-  width: 720px;
-  height: 944px;
+  height: 800px;
+  padding: 40px;
+  margin: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-left: 39px;
-top: 40px;
+  background: linear-gradient(
+  180deg, rgba(136, 74, 237, 0.8) 0%, #387F9A 100%);
+  border-radius: 20px;
 }
 
 .no-account{ 
