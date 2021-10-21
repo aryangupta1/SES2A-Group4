@@ -1,7 +1,8 @@
 import { group } from "console";
 import { useEffect, useState } from "react";
+import { Button } from "semantic-ui-react";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
-import Navbar from "../../components/NavBar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import styles from "../adminPage/adminPage.module.css";
 import background from "../assignmentPage/assignmentPage.module.css";
 
@@ -25,7 +26,7 @@ const AssignmentPage = () => {
         setId(groupIds);
     };
     const getStudentInGroup = async () =>{
-        groupIds?.forEach(async (id) => {
+        await groupIds?.forEach(async (id) => {
             const getStudents = await fetch(`http://localhost:8000/assignments/${id}/${assignmentName}/students`)
             const students = await getStudents.json();
             sessionStorage.setItem(`${id}`, await students);
@@ -35,8 +36,33 @@ const AssignmentPage = () => {
         getAssignment();
         getStudentInGroup();
     }, []);
-    getStudentInGroup();
-
+    const sort = async() => {
+        //Add students to assignment first
+        try{
+            const body = {"assignmentName": assignmentName}
+            const addAllToAssignment = await fetch(`http://localhost:8000/addAllStudentsToAssignment`, {
+                method:"PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+            await addAllToAssignment.json().finally(async() => {
+                //Begin sorting 
+                const sortAssignments = await fetch(`http://localhost:8000/sortAssignments`, {
+                    method:"PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(body)
+                });
+                await sortAssignments.json().finally(async() => {
+                    await getAssignment().finally(async() => {
+                        await getStudentInGroup();
+                    });
+                })
+            })
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
     //Someone please style this later :-)
     return(
     <div className={background.background}>
@@ -49,6 +75,8 @@ const AssignmentPage = () => {
                 <AssignmentCard assignmentName={group['groupName']} buttonText={"Sort"} isAdmin={true} 
                 description={'Current members: ' + sessionStorage.getItem(group['id'])}/>
             ))}
+            <br></br>
+            <Button onClick={() => sort()}>Sort All Groups</Button>
               </div>
             </div>
         </div>

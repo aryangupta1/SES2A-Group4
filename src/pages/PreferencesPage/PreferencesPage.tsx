@@ -6,6 +6,7 @@ export const PreferencesPage = () => {
   return (
     <div className="flex-wrapper">
         <div className="Rectangle">
+          <div className="padding"/>
             <h3 className="topText"> You're nearly there!</h3>
             <img alt="finished-illustration" className="finishedIllustration" src={finishedIllustration} />
         </div>

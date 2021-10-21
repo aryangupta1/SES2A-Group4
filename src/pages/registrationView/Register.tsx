@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 const PageAnimation = () => {
   return (
     <div className="Rectangle">
+      <div className="padding"/>
       <h1 className="topText">Come Join Us!</h1>
       <Image className="illustration" src={teamImage} alt="Team Work" />
     </div>

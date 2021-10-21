@@ -1,0 +1,67 @@
+.preferencesForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align-last: center;
+    margin: 20px;
+    padding: 30px;
+}
+
+Button {
+    width: 200px;
+}
+
+select {
+    width: 180px;
+    padding: 6px 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px #666;
+    margin-bottom: 20px;
+}
+
+.formComponent{
+    padding: 20px
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.assignmentForm{ 
+    padding: 100px;
+}
+
+.title{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titleContainer{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fieldTitle{
+    margin-top: 10px;
+    
+}
+
+.create{ 
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.button{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

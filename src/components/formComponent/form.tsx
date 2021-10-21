@@ -1,7 +1,7 @@
 import "semantic-ui-css/semantic.min.css";
 import React, { useState, useEffect } from "react";
 import { Button } from "semantic-ui-react";
-import "./form.css";
+import styles from "./form.module.css";
 
 export interface IFormComponents {
   requiredFields?: string[];
@@ -119,47 +119,55 @@ export const FormComponent: React.FC<IFormComponents> = ({
   };
 
   return (
-    <div className="ui grid">
+    <div>
       <div>
-        <form className="preferencesForm" onSubmit={(e) => submitForm(e)}>
-          <div className="formWrapper">
-            <div className="form-input">
+        <form onSubmit={(e) => submitForm(e)} className={styles.formComponent}>
+          <div>
+            <div className={styles.title}>
+              <h1>Create An Assignment!</h1>
+              <p>Please create an assignment for the students to join👨‍💻</p>
+            </div>
+            <div className={styles.create}>
               {requiredFields.length > 0 &&
                 requiredFields.map((field) => (
                   <div>
-                    <p>{field}</p>
+                    <p style={{ marginTop: "15px" }}>{field}</p>
                     <input className="input" name={field} />
                   </div>
                 ))}
             </div>
-            <div className="preferencesForm">
-              <h3>Preferences</h3>
-              {numberOfPreferences > 0 &&
-                Array.from(Array.from({ length: numberOfPreferences }, (_, i) => i)).map((preference) => (
-                  <div>
-                    <p> {"Preference " + (preference + 1)} </p>
-                    <select id={"pref" + preference} name={"pref" + preference}>
-                      {" "}
-                      {studentPreferences}{" "}
-                    </select>
-                  </div>
-                ))}
-              <h3>Skills</h3>
-              {numberOfSkills > 0 &&
-                Array.from(Array.from({ length: numberOfSkills }, (_, i) => i)).map((skill) => (
-                  <div>
-                    <p> {"Skill " + (skill + 1)} </p>
-                    <select id={"skill" + skill} name={"skill" + skill}>
-                      {" "}
-                      {studentSkills}{" "}
-                    </select>
-                  </div>
-                ))}
+            <div className={styles.preferencesForm}>
+              <div>
+                <h3>Preferences</h3>
+                {numberOfPreferences > 0 &&
+                  Array.from(Array.from({ length: numberOfPreferences }, (_, i) => i)).map((preference) => (
+                    <div>
+                      <p> {"Preference " + (preference + 1)} </p>
+                      <select id={"pref" + preference} name={"pref" + preference}>
+                        {studentPreferences}
+                      </select>
+                    </div>
+                  ))}
+              </div>
+              <div>
+                <h3>Skills</h3>
+                {numberOfSkills > 0 &&
+                  Array.from(Array.from({ length: numberOfSkills }, (_, i) => i)).map((skill) => (
+                    <div>
+                      <p> {"Skill " + (skill + 1)} </p>
+                      <select id={"skill" + skill} name={"skill" + skill}>
+                        {studentSkills}
+                      </select>
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
-          <Button color="violet" type="submit">
-            {submitButtonText}
-          </Button>
+          <div className={styles.button}>
+            <Button color="violet" type="submit" style={{ borderRadius: "20px" }}>
+              {submitButtonText}
+            </Button>
+          </div>
         </form>
       </div>
     </div>
