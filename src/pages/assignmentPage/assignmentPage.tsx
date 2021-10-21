@@ -25,6 +25,7 @@ const AssignmentPage = () => {
         //Save group Ids for later
         const groupIds: [] = [];
         const id  = groups?.forEach((group)=>groupIds.push(group['id']));
+        sessionStorage.setItem(`${assignmentName}:NumStudents`, JSON.parse(assignment)[0].students.length)
         setId(groupIds);
         
     };
