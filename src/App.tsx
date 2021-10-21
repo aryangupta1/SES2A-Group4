@@ -60,7 +60,7 @@ class App extends Component {
             <GuardedRoute path="/Register" component={Register} />
             <GuardedRoute path="/preferences" component={PreferencesPage} meta={{ auth: true }} />
             <GuardedRoute path="/logout" meta={{auth: 'logout'}}/>
-            <GuardedRoute path="/assignment" component={AssignmentPage} meta={{auth: true && 'RequireAdmin'}}/>
+            <GuardedRoute path="/assignment" component={AssignmentPage} meta={{auth: true}}/>
           </Switch>
         </GuardProvider>
       </BrowserRouter>
