@@ -65,9 +65,9 @@ const AssignmentPage = () => {
   //Someone please style this later :-)
   return (
     <div className={background.background}>
-      <div className="four wide column">
+      <div>
         <Navbar children={["about", "login", "register", "logout"]} />
-        <h1>Assignment : {assignmentName}</h1>
+        <h1 style={{ marginLeft: "60px" }}>Assignment : {assignmentName}</h1>
         <div className={styles.assignmentContainer}>
           <div className={styles.assignmentGrid}>
             {groups?.map((group) => (

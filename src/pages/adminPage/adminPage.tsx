@@ -2,7 +2,6 @@ import { useFormControl } from "@material-ui/core";
 /* import axios from "axios"; */
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "semantic-ui-react";
-import { forEachChild } from "typescript";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
 import { FormComponent } from "../../components/formComponent/form";
 import Navbar from "../../components/NavBar/Navbar";
@@ -47,16 +46,12 @@ const AdminPage = () => {
         <div className={styles.subheading}>
           Here, you can edit your details, create a new assignment, or view your existing assignments!
         </div>
-        <input className={styles.input} onChange={(e) => setSearch(e.target.value)} />
+        <input placeholder="Search Here!" className={styles.input} onChange={(e) => setSearch(e.target.value)} />
         <Modal
           onClose={() => setOpen(false)}
           onOpen={() => setOpen(true)}
           open={open}
-          trigger={
-            <Button style={{ backgroundColor: "black", color: "white", position: "inherit" }} circular>
-              Add Assignment
-            </Button>
-          }
+          trigger={<button className={styles.assignmentBtn}>Add Assignment</button>}
         >
           <FormComponent
             onSubmit="handleSubmit"
@@ -73,7 +68,7 @@ const AdminPage = () => {
           {assignmentList
             ?.filter((assignment) => assignment.toLowerCase().includes(search.toLowerCase()))
             .map((assignment) => (
-              <AssignmentCard assignmentName={assignment} buttonText={"View"} isAdmin={true} />
+              <AssignmentCard assignmentName={assignment} buttonText={"View Assignment"} isAdmin={true} />
             ))}
         </div>
       </div>
