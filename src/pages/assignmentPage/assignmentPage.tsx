@@ -14,7 +14,9 @@ const AssignmentPage = () => {
     const assignmentName = window.location.search.replace('?', '');
     const getAssignment = async () =>{
         const email = sessionStorage.getItem('Email');
-        const assignmentRequest = await fetch(`http://localhost:8000/assignments/${email}/${assignmentName}`);
+        const url = (sessionStorage.getItem('User') === 'Student')? `http://localhost:8000/assignments/admin@link.com.au/${assignmentName}`:
+        `http://localhost:8000/assignments/${email}/${assignmentName}`;
+        const assignmentRequest = await fetch(url);
         let assignmentInfo = await assignmentRequest.json();
         //Save assignment in storage
         sessionStorage.setItem(`${assignmentName}`, JSON.stringify(assignmentInfo));
@@ -24,6 +26,7 @@ const AssignmentPage = () => {
         const groupIds: [] = [];
         const id  = groups?.forEach((group)=>groupIds.push(group['id']));
         setId(groupIds);
+        
     };
     const getStudentInGroup = async () =>{
         await groupIds?.forEach(async (id) => {
@@ -76,7 +79,7 @@ const AssignmentPage = () => {
                 description={'Current members: ' + sessionStorage.getItem(group['id'])}/>
             ))}
             <br></br>
-            <Button onClick={() => sort()}>Sort All Groups</Button>
+            {sessionStorage.getItem('User') === 'Admin' ?<Button onClick={() => sort()}>Sort All Groups</Button>: null}
               </div>
             </div>
         </div>
