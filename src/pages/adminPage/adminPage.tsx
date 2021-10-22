@@ -5,7 +5,7 @@ import { Button, Modal } from "semantic-ui-react";
 import { forEachChild } from "typescript";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
 import { FormComponent } from "../../components/formComponent/form";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/navBar/Navbar";
 import { Preferences } from "../../components/Preferences/preferences";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import styles from "./adminPage.module.css";
