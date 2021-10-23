@@ -3,6 +3,7 @@ import { Sidebar } from "../../components/Sidebar/Sidebar";
 import "./studentPage.css";
 import Search from "../../components/Search/Search";
 import AssignmentCard from "../../components/AssignmentCard/AssignmentCard";
+import styles from "./StudentPage.module.css";
 
 const StudentPage = () => {
   const [email] = useState(sessionStorage.getItem("Email"));
@@ -26,14 +27,19 @@ const StudentPage = () => {
     <div className="studentContainer">
       <Sidebar />
       <div className="contentContainer">
-        <h1>Welcome {email} to your student dashboard</h1>
+        <h1 style={{ marginTop: "20px" }}>Welcome {email} to your student dashboard</h1>
         <div className="searchContainer">
           <div>
             <div className="searchHeading">Find Assignment</div>
             <div className="searchSubheading">
               Here, you can edit your details, create a new assignment, or view your existing assignments!
             </div>
-            <input className="searchInput" onChange={(e) => setSearch(e.target.value)} />
+            <input
+              placeholder="Search Here!"
+              style={{ paddingLeft: "15px" }}
+              className="searchInput"
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
         </div>
         <div className="assignmentContainer">

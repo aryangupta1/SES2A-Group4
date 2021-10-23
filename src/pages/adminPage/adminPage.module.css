@@ -34,6 +34,7 @@
     height: 40px;
     margin-top: 10px;
     margin-bottom: 12px;
+    padding-left: 15px;
   }
 
 .assignmentGrid{
@@ -58,4 +59,20 @@
   top:0px;
   left:0px;
   padding: 0px 96px 0px 96px;
+}
+
+.assignmentBtn{ 
+  background: black;
+  color: white;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  transition: 0.5s;
+}
+
+.assignmentBtn:hover{
+  background: linear-gradient(155deg, rgba(136,74,237,1) 0%, rgba(56,127,154,1) 95%);
+  border-radius: 20px;
+  cursor: pointer;
 }
