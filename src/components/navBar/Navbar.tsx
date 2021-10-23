@@ -19,11 +19,29 @@ export const Navbar: React.FC<INavBarProps> = ({ children }) => {
       </div>
       <div className={styles.navRightContainer}>
         <Button.Group>
-          {children.map((buttonName) => (
-            <Button style={{ position: "inherit" }} onClick={() => history.push(`/${buttonName}`)}>
-              {buttonName.charAt(0).toUpperCase() + buttonName.slice(1)}
-            </Button>
-          ))}
+          <Button
+            style={{ position: "inherit", color: "black", borderRadius: "20px 0px 0px 20px" }}
+            onClick={() => history.push(`/about`)}
+          >
+            About
+          </Button>
+          <Button
+            style={{ position: "inherit", color: "black" }}
+            className={styles.nav}
+            onClick={() => history.push(`/register`)}
+          >
+            Register
+          </Button>
+          <Button style={{ position: "inherit", color: "black" }} onClick={() => history.push(`/login`)}>
+            Login
+          </Button>
+          <Button
+            style={{ position: "inherit", color: "black", borderRadius: "0px 20px 20px 0px" }}
+            lassName={styles.nav}
+            onClick={() => history.push(`/`)}
+          >
+            Sign Out
+          </Button>
         </Button.Group>
       </div>
     </div>
