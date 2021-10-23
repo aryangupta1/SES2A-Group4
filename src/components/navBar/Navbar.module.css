@@ -28,5 +28,9 @@
   
 .logo{
   font-size: 48px;
-  margin: 0px 0px 0px 24px;
+  margin: 0px 0px 0px 5px;
   }
+
+.nav{ 
+  color: black;
+}
